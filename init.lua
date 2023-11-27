@@ -158,7 +158,9 @@ require('lazy').setup({
     priority = 1000
   },
   {
-    "catppuccin/nvim", name = "catppuccin", priority = 1000,
+    "catppuccin/nvim",
+    name = "catppuccin",
+    priority = 1000,
     config = function()
       vim.cmd.colorscheme 'catppuccin-latte'
     end
@@ -168,25 +170,30 @@ require('lazy').setup({
     version = "*", -- Use for stability; omit to use `main` branch for the latest features
     event = "VeryLazy",
     config = function()
-        require("nvim-surround").setup({
-            -- Configuration here, or leave empty to use defaults
-        })
+      require("nvim-surround").setup({
+        -- Configuration here, or leave empty to use defaults
+      })
     end
-},
-{
-  "nvim-tree/nvim-tree.lua",
-  version = "*",
-  lazy = false,
-  dependencies = {
-    "nvim-tree/nvim-web-devicons",
   },
-  config = function()
-    require("nvim-tree").setup {
+  {
+    "nvim-tree/nvim-tree.lua",
+    version = "*",
+    lazy = false,
+    dependencies = {
+      "nvim-tree/nvim-web-devicons",
+    },
+    config = function()
+      require("nvim-tree").setup {
       }
-  end,
-},
-  {'akinsho/toggleterm.nvim', version = "*", config = true},
-  
+    end,
+  },
+  {
+    'akinsho/toggleterm.nvim',
+    version = "*",
+    config = true,
+  },
+  { 'petobens/poet-v' },
+
   {
     -- Set lualine as statusline
     'nvim-lualine/lualine.nvim',
@@ -246,8 +253,8 @@ require('lazy').setup({
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
   --       These are some example plugins that I've included in the kickstart repository.
   --       Uncomment any of the lines below to enable them.
-   require 'kickstart.plugins.autoformat',
-   require 'kickstart.plugins.debug',
+  require 'kickstart.plugins.autoformat',
+  require 'kickstart.plugins.debug',
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    You can use this folder to prevent any conflicts with this init.lua if you're interested in keeping
@@ -371,7 +378,7 @@ local function live_grep_git_root()
   local git_root = find_git_root()
   if git_root then
     require('telescope.builtin').live_grep({
-      search_dirs = {git_root},
+      search_dirs = { git_root },
     })
   end
 end
@@ -633,4 +640,4 @@ cmp.setup {
 require "option"
 require "keybind"
 require "nvim_tree"
-
+require "toggleterm"

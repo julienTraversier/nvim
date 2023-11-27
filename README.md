@@ -1,6 +1,8 @@
 to Install : 
 nvim tree instead of netw
 https://github.com/kylechui/nvim-surround
+nvim alpha
+hop nvim
 
 
 # kickstart.nvim
