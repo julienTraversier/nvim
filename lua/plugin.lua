@@ -43,4 +43,16 @@ return {
       'nvim-tree/nvim-web-devicons', -- OPTIONAL: for file icons
     },
   },
+  {
+    {
+      "kdheepak/lazygit.nvim",
+      dependencies = {
+        "nvim-telescope/telescope.nvim",
+        "nvim-lua/plenary.nvim"
+      },
+      config = function()
+        require("telescope").load_extension("lazygit")
+      end
+    }
+  }
 }
