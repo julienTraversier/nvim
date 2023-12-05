@@ -69,6 +69,8 @@ function _G.set_terminal_keymaps()
 end
 
 vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
+
+keymap("n", "<F4>", "<Cmd>ClangdSwitchSourceHeader<CR>", opts)
 -- Terminal --
 ---- Better terminal navigation
 --keymap("t", "<C-h>", "<C-\\><C-N><C-w>h", term_opts)
