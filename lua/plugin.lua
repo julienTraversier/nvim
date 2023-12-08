@@ -54,5 +54,8 @@ return {
         require("telescope").load_extension("lazygit")
       end
     }
+  },
+  {
+    "jiangmiao/auto-pairs",
   }
 }

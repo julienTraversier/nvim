@@ -19,8 +19,17 @@ nvimtree.setup({
   },
   renderer = {
     group_empty = true,
+    highlight_modified = "all",
   },
   filters = {
     dotfiles = false,
   },
+  update_focused_file = {
+    enable = true
+  },
+  actions = {
+    open_file = {
+      quit_on_open = true
+    }
+  }
 })
