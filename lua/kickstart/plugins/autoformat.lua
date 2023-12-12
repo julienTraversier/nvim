@@ -61,6 +61,7 @@ return {
             end
 
             vim.lsp.buf.format {
+              lineLength = 120,
               async = false,
               filter = function(c)
                 return c.id == client.id

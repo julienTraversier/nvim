@@ -85,5 +85,22 @@ return {
     -- Install golang specific config
     require('dap-go').setup()
     require('dap-python').setup("python")
+
+    dap.adapters.gdb = {
+      type = "executable",
+      command = "gdb",
+      args = { "-i", "dap" }
+    }
+    dap.configurations.cpp = {
+      {
+        name = "Launch",
+        type = "gdb",
+        request = "launch",
+        program = function()
+          return vim.fn.input(vim.fn.getcwd().."/../build_x86/fiber-optic/Fiber_Optic")
+        end,
+        cwd = "${workspaceFolder}",
+      },
+    }
   end,
 }

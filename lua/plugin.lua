@@ -56,6 +56,12 @@ return {
     }
   },
   {
+    "tpope/vim-fugitive"
+  },
+  {
+    "rhysd/git-messenger.vim"
+  },
+  {
     "jiangmiao/auto-pairs",
   }
 }

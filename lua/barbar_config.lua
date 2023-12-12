@@ -43,6 +43,8 @@ barbar.setup {
 
 map('n', '<A-,>', '<Cmd>BufferPrevious<CR>', opts)
 map('n', '<A-;>', '<Cmd>BufferNext<CR>', opts)
+map('n', '<A-left>', '<Cmd>BufferPrevious<CR>', opts)
+map('n', '<A-right>', '<Cmd>BufferNext<CR>', opts)
 -- Re-order to previous/next
 map('n', '<A-<>', '<Cmd>BufferMovePrevious<CR>', opts)
 map('n', '<A->>', '<Cmd>BufferMoveNext<CR>', opts)
