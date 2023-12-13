@@ -19,7 +19,6 @@ return {
     'jay-babu/mason-nvim-dap.nvim',
 
     -- Add your own debuggers here
-    'leoluz/nvim-dap-go',
     "mfussenegger/nvim-dap-python",
   },
   config = function()
@@ -82,25 +81,25 @@ return {
     dap.listeners.before.event_terminated['dapui_config'] = dapui.close
     dap.listeners.before.event_exited['dapui_config'] = dapui.close
 
-    -- Install golang specific config
-    require('dap-go').setup()
-    require('dap-python').setup("python")
+    require('dap-python').setup("~/.virtualenvs/debugpy/bin/python")
 
-    dap.adapters.gdb = {
-      type = "executable",
-      command = "gdb",
-      args = { "-i", "dap" }
+    dap.adapters.cppdbg = {
+      id = 'cppdbg',
+      type = 'executable',
+      command = '/home/jtraversier/Téléchargements/extension/debugAdapters/bin/OpenDebugAD7',
     }
     dap.configurations.cpp = {
       {
-        name = "Launch",
-        type = "gdb",
+        name = "Launch file",
+        type = "cppdbg",
         request = "launch",
-        program = function()
-          return vim.fn.input(vim.fn.getcwd().."/../build_x86/fiber-optic/Fiber_Optic")
-        end,
-        cwd = "${workspaceFolder}",
-      },
+        --program = function()
+        --  return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+        --end,
+        program = "${workspaceFolder}/../build_x86/fiber-optic/Fiber_Optic",
+        cwd = '${workspaceFolder}',
+        stopAtEntry = false,
+      }
     }
   end,
 }

@@ -63,5 +63,8 @@ return {
   },
   {
     "jiangmiao/auto-pairs",
+  },
+  {
+    'petobens/poet-v'
   }
 }
