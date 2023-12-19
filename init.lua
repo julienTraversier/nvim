@@ -94,7 +94,16 @@ require('lazy').setup({
       'folke/neodev.nvim',
     },
   },
-
+  {
+      'nvimdev/lspsaga.nvim',
+      config = function()
+      require('lspsaga').setup({})
+      end,
+      dependencies = {
+          'nvim-treesitter/nvim-treesitter', -- optional
+          'nvim-tree/nvim-web-devicons'     -- optional
+      }
+  },
   {
     -- Autocompletion
     'hrsh7th/nvim-cmp',
@@ -282,8 +291,8 @@ vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = tr
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
 -- Diagnostic keymaps
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message' })
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
+vim.keymap.set('n', '[d',':Lspsaga diagnostic_jump_prev<CR>', { desc = 'Go to previous diagnostic message' })
+vim.keymap.set('n', ']d', ':Lspsaga diagnostic_jump_next<CR>', { desc = 'Go to next diagnostic message' })
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
 
@@ -458,7 +467,10 @@ local on_attach = function(_, bufnr)
   end
 
   nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
-  nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
+--  nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
+  vim.keymap.set('n','<leader>ca',":Lspsaga code_action<CR>" ,{buffer = bufnr, desc = '[C]ode [A]ction'})
+  vim.keymap.set('n','<leader>ch',":Lspsaga incoming_calls<CR>" ,{buffer = bufnr, desc = '[C]all [H]ierarchy'})
+  vim.keymap.set('n','<leader>fu',":Lspsaga finder<CR>" ,{buffer = bufnr, desc = '[F]ind [U]sage'})
 
   nmap('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
   nmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
@@ -468,7 +480,8 @@ local on_attach = function(_, bufnr)
   nmap('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
 
   -- See `:help K` for why this keymap
-  nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
+  --nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
+  vim.keymap.set('n','K',":Lspsaga hover_doc<CR>" ,{buffer = bufnr, desc = 'Hover Documentation'})
   nmap('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
 
   -- Lesser used LSP functionality
@@ -542,7 +555,7 @@ mason_lspconfig.setup {
 mason_lspconfig.setup_handlers {
   function(server_name)
     require('lspconfig')[server_name].setup {
-      capabilities = capabilities,
+      capabilities = require("coq").lsp_ensure_capabilities(capabilities),
       on_attach = on_attach,
       settings = servers[server_name],
       filetypes = (servers[server_name] or {}).filetypes,
@@ -572,7 +585,7 @@ cmp.setup {
     ['<C-d>'] = cmp.mapping.scroll_docs(-4),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
     ['<C-Space>'] = cmp.mapping.complete {},
-    ['<CR>'] = cmp.mapping.confirm {
+    ['<enter>'] = cmp.mapping.confirm {
       behavior = cmp.ConfirmBehavior.Replace,
       select = true,
     },
@@ -617,3 +630,4 @@ require "feline_config"
 require "leap_config"
 require "barbecue_config"
 require "neoscroll_config"
+
