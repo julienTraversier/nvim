@@ -18,24 +18,21 @@ return {
   },
   -- Toggle Term
   -- Added this plugin.
-  {
-    'akinsho/toggleterm.nvim',
+{
+   'akinsho/toggleterm.nvim',
     tag = "*",
     config = true
   },
   {
-    "nvim-tree/nvim-tree.lua",
-    version = "*",
-    lazy = false,
-    dependencies = {
-      "nvim-tree/nvim-web-devicons",
-    },
+    'ms-jpq/chadtree'
   },
-  {
-    "kylechui/nvim-surround",
-    version = "*", -- Use for stability; omit to use `main` branch for the latest features
-    event = "VeryLazy",
-  },
+--  {
+--    "nvim-tree/nvim-tree.lua",
+--    version = "*",
+--    lazy = false,
+--    dependencies = {
+--      "nvim-tree/nvim-web-devicons",
+--    },
   {
     "romgrk/barbar.nvim",
     dependencies = {
@@ -68,8 +65,10 @@ return {
     'petobens/poet-v'
   },
   {
-    'freddiehaddad/feline.nvim',
-    opts = {},
+    'glepnir/galaxyline.nvim',
+    branch = 'main',
+    -- your statusline
+    requires = { 'nvim-tree/nvim-web-devicons', opt = true },
   },
   {
     "ggandor/leap.nvim"
@@ -93,10 +92,16 @@ return {
     'mfussenegger/nvim-lint'
   },
   {
-    'ms-jpq/coq_nvim',
-    dependencies = {
-      'ms-jpq/coq.artifacts',
-      'ms-jpq/coq.thirdparty'
+    "folke/twilight.nvim",
+    opts = {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
     }
-  }
+  },
+  {
+    "kylechui/nvim-surround",
+    version = "*", -- Use for stability; omit to use `main` branch for the latest features
+    event = "VeryLazy",
+  },
 }

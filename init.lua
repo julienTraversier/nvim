@@ -31,7 +31,6 @@ In addition, I have some `NOTE:` items throughout the file.
 These are for you, the reader to help understand what is happening. Feel free to delete
 them once you know what you're doing, but they should serve as a guide for when you
 are first encountering a few different constructs in your nvim config.
-
 I hope you enjoy your Neovim journey,
 - TJ
 
@@ -166,8 +165,8 @@ require('lazy').setup({
     'navarasu/onedark.nvim',
     priority = 1000
   },
+  {
 
-  --[[{
     -- Set lualine as statusline
     'nvim-lualine/lualine.nvim',
     -- See `:help lualine.txt`
@@ -179,7 +178,7 @@ require('lazy').setup({
         section_separators = '',
       },
     },
-  },]]
+  },
 
   {
     -- Add indentation guides even on blank lines
@@ -555,7 +554,7 @@ mason_lspconfig.setup {
 mason_lspconfig.setup_handlers {
   function(server_name)
     require('lspconfig')[server_name].setup {
-      capabilities = require("coq").lsp_ensure_capabilities(capabilities),
+      capabilities = capabilities,
       on_attach = on_attach,
       settings = servers[server_name],
       filetypes = (servers[server_name] or {}).filetypes,
@@ -618,8 +617,9 @@ cmp.setup {
 -- vim: ts=2 sts=2 sw=2 et
 require "option"
 require "keybind"
-require "nvim_tree_config"
-require "toggleterm"
+--require "nvim_tree_config"
+require "nvim_chad_tree_config"
+require "toggleterm_config"
 require "surround_config"
 require "toggleterm_config"
 require "colorscheme_config"

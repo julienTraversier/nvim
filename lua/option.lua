@@ -39,6 +39,7 @@ vim.opt.autoindent = true
 vim.opt.cindent = true
 vim.opt.smarttab = true
 vim.opt.expandtab = true
+vim.opt.shell = "/usr/bin/fish"
 
 vim.opt.shortmess:append "c"
 

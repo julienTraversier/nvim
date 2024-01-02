@@ -3,4 +3,5 @@ if not status_ok then
   return
 end
 
-leap.add_default_mappings()
+vim.keymap.set({'n', 'x', 'o'}, 'z', '<Plug>(leap-forward-to)')
+vim.keymap.set({'n', 'x', 'o'}, 'Z', '<Plug>(leap-backward-to)')
