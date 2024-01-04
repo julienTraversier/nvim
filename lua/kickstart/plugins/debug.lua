@@ -82,6 +82,16 @@ return {
     dap.listeners.before.event_exited['dapui_config'] = dapui.close
 
     require('dap-python').setup("~/.virtualenvs/debugpy/bin/python")
+    dap.configurations.python = {
+      {
+      type = "python",
+      request = "launch",
+      name = "launch file",
+      cwd = "${workspaceFolder}",
+      program = "${file}"
+    }
+    }
+
 
     dap.adapters.cppdbg = {
       id = 'cppdbg',

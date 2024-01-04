@@ -18,28 +18,28 @@ return {
   },
   -- Toggle Term
   -- Added this plugin.
-{
-   'akinsho/toggleterm.nvim',
+  {
+    'akinsho/toggleterm.nvim',
     tag = "*",
     config = true
   },
   {
     'ms-jpq/chadtree'
   },
---  {
---    "nvim-tree/nvim-tree.lua",
---    version = "*",
---    lazy = false,
---    dependencies = {
---      "nvim-tree/nvim-web-devicons",
---    },
-  {
-    "romgrk/barbar.nvim",
-    dependencies = {
-      'lewis6991/gitsigns.nvim',     -- OPTIONAL: for git status
-      'nvim-tree/nvim-web-devicons', -- OPTIONAL: for file icons
-    },
-  },
+  --  {
+  --    "nvim-tree/nvim-tree.lua",
+  --    version = "*",
+  --    lazy = false,
+  --    dependencies = {
+  --      "nvim-tree/nvim-web-devicons",
+  --    },
+  --  {
+  --    "romgrk/barbar.nvim",
+  --    dependencies = {
+  --      'lewis6991/gitsigns.nvim',     -- OPTIONAL: for git status
+  --      'nvim-tree/nvim-web-devicons', -- OPTIONAL: for file icons
+  --    },
+  --  },
   {
     {
       "kdheepak/lazygit.nvim",
@@ -86,7 +86,7 @@ return {
     },
   },
   {
-   "karb94/neoscroll.nvim"
+    "karb94/neoscroll.nvim"
   },
   {
     'mfussenegger/nvim-lint'
@@ -103,5 +103,25 @@ return {
     "kylechui/nvim-surround",
     version = "*", -- Use for stability; omit to use `main` branch for the latest features
     event = "VeryLazy",
+  },
+  { 'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons' },
+  { "yamatsum/nvim-cursorline" },
+  {
+    'linux-cultist/venv-selector.nvim',
+    dependencies = { 'neovim/nvim-lspconfig', 'nvim-telescope/telescope.nvim', 'mfussenegger/nvim-dap-python' },
+    config = function()
+      require('venv-selector').setup {
+        -- Your options go here
+        -- name = "venv",
+        -- auto_refresh = false
+      }
+    end,
+    event = 'VeryLazy', -- Optional: needed only if you want to type `:VenvSelect` without a keymapping
+    keys = {
+      -- Keymap to open VenvSelector to pick a venv.
+      { '<leader>vs', '<cmd>VenvSelect<cr>' },
+      -- Keymap to retrieve the venv from a cache (the one previously used for the same project directory).
+      { '<leader>vc', '<cmd>VenvSelectCached<cr>' },
+    },
   },
 }
