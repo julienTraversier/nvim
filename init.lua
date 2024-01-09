@@ -308,6 +308,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 -- [[ Configure Telescope ]]
 -- See `:help telescope` and `:help telescope.setup()`
+local themes = require('telescope.themes')
 require('telescope').setup {
   defaults = {
     mappings = {
@@ -564,6 +565,7 @@ mason_lspconfig.setup_handlers {
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
+require("harpoon")
 require "cmp_config"
 require "option"
 require "keybind"
@@ -573,7 +575,7 @@ require "toggleterm_config"
 require "surround_config"
 require "toggleterm_config"
 require "colorscheme_config"
-require "alpha_nvim_config"
+require "startup_nvim_config"
 --require "barbar_config"
 require "lazygit_config"
 require "feline_config"
@@ -582,4 +584,4 @@ require "barbecue_config"
 require "neoscroll_config"
 require "cursorline_config"
 require "bufferline_config"
-
+require "noice_config"

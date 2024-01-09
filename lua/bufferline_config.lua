@@ -104,6 +104,8 @@ local opts = { noremap = true, silent = true }
 
 map('n', '<A-left>', '<Cmd>BufferLineCyclePrev<CR>', opts)
 map('n', '<A-right>', '<Cmd>BufferLineCycleNext<CR>', opts)
+map('n', '<A-h>', '<Cmd>BufferLineCyclePrev<CR>', opts)
+map('n', '<A-l>', '<Cmd>BufferLineCycleNext<CR>', opts)
 -- Re-order to previous/next
 map('n', '<A-<>', '<Cmd>BufferLineMovePrev<CR>', opts)
 map('n', '<A->>', '<Cmd>BufferLineMoveNext<CR>', opts)

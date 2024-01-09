@@ -1,9 +1,9 @@
 return {
-  -- Alpha (Dashboard)
   {
-    "goolord/alpha-nvim",
-    lazy = true,
-  },
+  'nvimdev/dashboard-nvim',
+  event = 'VimEnter',
+  dependencies = { {'nvim-tree/nvim-web-devicons'}}
+},
   -- Colorscheme
   {
     'folke/tokyonight.nvim',
@@ -26,20 +26,6 @@ return {
   {
     'ms-jpq/chadtree'
   },
-  --  {
-  --    "nvim-tree/nvim-tree.lua",
-  --    version = "*",
-  --    lazy = false,
-  --    dependencies = {
-  --      "nvim-tree/nvim-web-devicons",
-  --    },
-  --  {
-  --    "romgrk/barbar.nvim",
-  --    dependencies = {
-  --      'lewis6991/gitsigns.nvim',     -- OPTIONAL: for git status
-  --      'nvim-tree/nvim-web-devicons', -- OPTIONAL: for file icons
-  --    },
-  --  },
   {
     {
       "kdheepak/lazygit.nvim",
@@ -62,15 +48,6 @@ return {
     "jiangmiao/auto-pairs",
   },
   {
-    'petobens/poet-v'
-  },
-  {
-    'glepnir/galaxyline.nvim',
-    branch = 'main',
-    -- your statusline
-    requires = { 'nvim-tree/nvim-web-devicons', opt = true },
-  },
-  {
     "ggandor/leap.nvim"
   },
   {
@@ -90,14 +67,6 @@ return {
   },
   {
     'mfussenegger/nvim-lint'
-  },
-  {
-    "folke/twilight.nvim",
-    opts = {
-      -- your configuration comes here
-      -- or leave it empty to use the default settings
-      -- refer to the configuration section below
-    }
   },
   {
     "kylechui/nvim-surround",
@@ -124,4 +93,22 @@ return {
       { '<leader>vc', '<cmd>VenvSelectCached<cr>' },
     },
   },
+  {
+    "folke/noice.nvim",
+    event = "VeryLazy",
+    opts = {
+      -- add any options here
+    },
+    dependencies = {
+      -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+      "MunifTanjim/nui.nvim",
+      -- OPTIONAL:
+      --   `nvim-notify` is only needed, if you want to use the notification view.
+      --   If not available, we use `mini` as the fallback
+      "rcarriga/nvim-notify",
+    }
+  },
+  {
+    "ThePrimeagen/harpoon"
+  }
 }
