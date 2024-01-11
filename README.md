@@ -1,3 +1,9 @@
+Dependancy :
+- ripgrap
+- fzf
+- fd-find
+
+
 to Install : 
 nvim tree instead of netw
 https://github.com/kylechui/nvim-surround
