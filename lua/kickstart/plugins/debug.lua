@@ -98,7 +98,7 @@ return {
       type = 'executable',
       command = '/home/jtraversier/Téléchargements/extension/debugAdapters/bin/OpenDebugAD7',
     }
-    dap.configurations.cpp = {
+    dap.configurations.c = {
       {
         name = "Launch file",
         type = "cppdbg",

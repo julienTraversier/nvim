@@ -27,7 +27,7 @@ vim.opt.softtabstop = 4
 vim.opt.tabstop = 4                             -- insert 2 spaces for a tab
 vim.opt.cursorline = true                       -- highlight the current line
 vim.opt.number = true                           -- set numbered lines
-vim.opt.relativenumber = true                  -- set relative numbered lines
+vim.opt.relativenumber = true                   -- set relative numbered lines
 vim.opt.numberwidth = 4                         -- set number column width to 2 {default 4}
 vim.opt.signcolumn =
 "yes"                                           -- always show the sign column, otherwise it would shift the text each time
@@ -46,3 +46,47 @@ vim.opt.shortmess:append "c"
 vim.cmd "set whichwrap+=<,>,[,],h,l"
 vim.cmd [[set iskeyword+=-]]
 vim.cmd [[set formatoptions-=cro]] -- TODO: this doesn't seem to work
+
+-- [[ Setting options ]]
+-- See `:help vim.o`
+-- Make line numbers default
+vim.wo.number = true
+-- Enable mouse mode
+vim.o.breakindent = true
+-- Case-insensitive searching UNLESS \C or capital in search
+vim.o.ignorecase = true
+vim.o.smartcase = true
+-- Keep signcolumn on by default
+vim.wo.signcolumn = 'yes'
+-- Decrease update time
+vim.o.updatetime = 250
+vim.o.timeoutlen = 300
+-- Set completeopt to have a better completion experience
+vim.o.completeopt = 'menuone,noselect'
+-- NOTE: You should make sure your terminal supports this
+vim.o.termguicolors = true
+-- [[ Basic Keymaps ]]
+-- Keymaps for better default experience
+-- See `:help vim.keymap.set()`
+vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
+
+-- Remap for dealing with word wrap
+vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+
+-- Diagnostic keymaps
+vim.keymap.set('n', '[d', ':Lspsaga diagnostic_jump_prev<CR>', { desc = 'Go to previous diagnostic message' })
+vim.keymap.set('n', '<leader>d', ':Lspsaga diagnostic_jump_next<CR>', { desc = 'Go to next diagnostic message' })
+--vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
+vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
+
+-- [[ Highlight on yank ]]
+-- See `:help vim.highlight.on_yank()`
+local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
+vim.api.nvim_create_autocmd('TextYankPost', {
+  callback = function()
+    vim.highlight.on_yank()
+  end,
+  group = highlight_group,
+  pattern = '*',
+})
