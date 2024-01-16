@@ -82,27 +82,27 @@ require('lazy').setup({
   -- { import = 'custom.plugins' },
 }, {})
 
+-- The line beneath this is called `modeline`. See `:help modeline`
+-- vim: ts=2 sts=2 sw=2 et
+require "catpuccin_config"
 require("telescope_config")
 require("treesitter_config")
 require("lsp_config")
+require "cmp_config"
 require("which-key")
 require("harpoon")
-require "cmp_config"
 require "option"
 require "keybind"
---require "nvim_tree_config"
-require "nvim_chad_tree_config"
+require "file_explorer_config"
 require "toggleterm_config"
 require "surround_config"
 require "toggleterm_config"
 require "colorscheme_config"
 require "startup_nvim_config"
---require "barbar_config"
 require "lazygit_config"
-require "feline_config"
-require "leap_config"
+require "status_line_config"
 require "barbecue_config"
 require "neoscroll_config"
 require "cursorline_config"
-require "bufferline_config"
 require "noice_config"
+require "bufferline_config"

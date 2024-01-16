@@ -30,8 +30,8 @@ return {
       require('lspsaga').setup({})
     end,
     dependencies = {
-      'nvim-treesitter/nvim-treesitter',     -- optional
-      'nvim-tree/nvim-web-devicons'          -- optional
+      'nvim-treesitter/nvim-treesitter', -- optional
+      'nvim-tree/nvim-web-devicons'      -- optional
     }
   },
   {
@@ -96,17 +96,16 @@ return {
     'navarasu/onedark.nvim',
     priority = 1000
   },
+  --'freddiehaddad/feline.nvim',
   {
-
     -- Set lualine as statusline
     'nvim-lualine/lualine.nvim',
-    -- See `:help lualine.txt`
     opts = {
+      theme = 'catppucin',
       options = {
         icons_enabled = true,
-        theme = 'auto',
-        component_separators = '|',
-        section_separators = '',
+        component_separators = ' ',
+        section_separators = { left = "", right = "" },
       },
     },
   },
@@ -158,7 +157,7 @@ return {
     dependencies = { { 'nvim-tree/nvim-web-devicons' } }
   },
   -- Colorscheme
-    'folke/tokyonight.nvim',
+  'folke/tokyonight.nvim',
   {
     "catppuccin/nvim",
     name = "catppuccin",
@@ -174,7 +173,18 @@ return {
     tag = "*",
     config = true
   },
-    'ms-jpq/chadtree',
+  'ms-jpq/chadtree',
+  {
+    "nvim-tree/nvim-tree.lua",
+    version = "*",
+    lazy = false,
+    dependencies = {
+      "nvim-tree/nvim-web-devicons",
+    },
+    config = function()
+      require("nvim-tree").setup {}
+    end,
+  },
   {
     {
       "kdheepak/lazygit.nvim",
@@ -187,10 +197,9 @@ return {
       end
     }
   },
-    "tpope/vim-fugitive",
-    "rhysd/git-messenger.vim",
-    "jiangmiao/auto-pairs",
-    "ggandor/leap.nvim",
+  "tpope/vim-fugitive",
+  "rhysd/git-messenger.vim",
+  "jiangmiao/auto-pairs",
   {
     "utilyre/barbecue.nvim",
     name = "barbecue",
@@ -203,8 +212,8 @@ return {
       -- configurations go here
     },
   },
-    "karb94/neoscroll.nvim",
-    'mfussenegger/nvim-lint',
+  { "karb94/neoscroll.nvim" },
+  'mfussenegger/nvim-lint',
   {
     "kylechui/nvim-surround",
     version = "*", -- Use for stability; omit to use `main` branch for the latest features
@@ -245,5 +254,5 @@ return {
       "rcarriga/nvim-notify",
     }
   },
-    "ThePrimeagen/harpoon",
+  "ThePrimeagen/harpoon",
 }
