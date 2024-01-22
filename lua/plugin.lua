@@ -255,5 +255,10 @@ return {
     }
   },
   "ThePrimeagen/harpoon",
-  'ThePrimeagen/git-worktree.nvim'
+  'ThePrimeagen/git-worktree.nvim',
+  {
+  'mrcjkb/rustaceanvim',
+  version = '^3', -- Recommended
+  ft = { 'rust' },
+  },
 }
