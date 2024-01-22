@@ -174,17 +174,17 @@ return {
     config = true
   },
   'ms-jpq/chadtree',
-  {
-    "nvim-tree/nvim-tree.lua",
-    version = "*",
-    lazy = false,
-    dependencies = {
-      "nvim-tree/nvim-web-devicons",
-    },
-    config = function()
-      require("nvim-tree").setup {}
-    end,
-  },
+--  {
+--    "nvim-tree/nvim-tree.lua",
+--    version = "*",
+--    lazy = false,
+--    dependencies = {
+--      "nvim-tree/nvim-web-devicons",
+--    },
+--    config = function()
+--      require("nvim-tree").setup {}
+--    end,
+--  },
   {
     {
       "kdheepak/lazygit.nvim",
@@ -255,4 +255,5 @@ return {
     }
   },
   "ThePrimeagen/harpoon",
+  'ThePrimeagen/git-worktree.nvim'
 }

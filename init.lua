@@ -93,7 +93,7 @@ require("which-key")
 require("harpoon")
 require "option"
 require "keybind"
-require "file_explorer_config"
+--require "file_explorer_config"
 require "toggleterm_config"
 require "surround_config"
 require "toggleterm_config"
@@ -106,3 +106,4 @@ require "neoscroll_config"
 require "cursorline_config"
 require "noice_config"
 require "bufferline_config"
+require "worktree_config"

@@ -9,6 +9,22 @@ end
 
 require('telescope').setup {
   defaults = {
+    layout_strategy = 'flex',
+    layout_config ={
+      horizontal = {
+        width = 0.8,
+        height = 0.8,
+        preview_width = 0.6,
+      },
+      vertical = {
+        width = 0.8,
+        height = 0.8,
+        preview_height = 0.6,
+        preview_cutoff = 120
+      }
+    },
+    path_display={"tail"},
+    wrap_results = true,
     mappings = {
       i = {
         ['<C-u>'] = false,
