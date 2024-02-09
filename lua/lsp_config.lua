@@ -20,6 +20,8 @@ local on_attach = function(_, bufnr)
   vim.keymap.set('n','<leader>ca',":Lspsaga code_action<CR>" ,{buffer = bufnr, desc = '[C]ode [A]ction'})
   vim.keymap.set('n','<leader>ch',":Lspsaga incoming_calls<CR>" ,{buffer = bufnr, desc = '[C]all [H]ierarchy'})
   vim.keymap.set('n','<leader>fu',":Lspsaga finder<CR>" ,{buffer = bufnr, desc = '[F]ind [U]sage'})
+  vim.keymap.set('n','<leader>pd',":Lspsaga peek_definition<CR>" ,{buffer = bufnr, desc = '[P]eek [D]efinition'})
+  vim.keymap.set('n','<leader>oo',":Lspsaga outline<CR>" ,{buffer = bufnr, desc = '[O]pen [O]utline'})
 
   nmap('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
   nmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
@@ -110,4 +112,22 @@ require('lspconfig').clangd.setup({
   cmd = require("clangd_config").cmd,
   on_attach = on_attach,
   filetypes = require("clangd_config").filetypes
+})
+
+
+require("lspsaga").setup({
+  finder = {
+    keys = {
+      shuttle = '<Tab>',
+      toggle_or_open = 'e',
+    }
+  },
+  callhierarchy = {
+    keys = {
+      shuttle = '<Tab>',
+    }
+  },
+  outline = {
+    layout = "float"
+  }
 })

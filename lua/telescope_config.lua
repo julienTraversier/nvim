@@ -69,7 +69,7 @@ local function live_grep_git_root()
     })
   end
 end
-
+vim.cmd "autocmd User TelescopePreviewerLoaded setlocal number"
 vim.api.nvim_create_user_command('LiveGrepGitRoot', live_grep_git_root, {})
 -- See `:help telescope.builtin`
 vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
