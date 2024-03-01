@@ -19,6 +19,12 @@ cmp.setup {
   completion = {
     completeopt = 'menu,menuone,noinsert'
   },
+  formatting = {
+  format = function(entry, vim_item)
+    vim_item.abbr = string.sub(vim_item.abbr, 1, 50)
+    return vim_item
+  end
+  },
   mapping = cmp.mapping.preset.insert {
     ['<C-j>'] = cmp.mapping.select_next_item(),
     ['<C-k>'] = cmp.mapping.select_prev_item(),
