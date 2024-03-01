@@ -34,12 +34,13 @@ vim.opt.signcolumn =
 vim.opt.wrap = false                            -- display lines as one long line
 vim.opt.scrolloff = 8                           -- is one of my fav
 vim.opt.sidescrolloff = 8
-vim.opt.guifont = "FireCode Nerd font:h17"      -- the font used in graphical neovim applications
+vim.opt.guifont = "FiraCode Nerd font:h17"      -- the font used in graphical neovim applications
 vim.opt.autoindent = true
 vim.opt.cindent = true
 vim.opt.smarttab = true
 vim.opt.expandtab = true
 vim.opt.shell = "/usr/bin/fish"
+vim.opt.suffixesadd = ".c,.cpp,.dic,.h,.menu,.py,.xml,.json"
 
 vim.opt.shortmess:append "c"
 

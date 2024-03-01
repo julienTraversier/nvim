@@ -270,4 +270,7 @@ return {
   end,
   ft = { "markdown" },
 },
+  {
+ 'echasnovski/mini.nvim', version = '*'
+  },
 }
