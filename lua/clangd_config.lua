@@ -27,8 +27,7 @@ return {
 		"--completion-style=bundled",
 		"--debug-origin",
 		"--enable-config", -- clangd 11+ supports reading from .clangd configuration file
-		"--fallback-style=Qt",
-		"--folding-ranges",
+		"--fallback-style=GNU",
 		"--function-arg-placeholders",
 		"--header-insertion=iwyu",
 		"--pch-storage=memory", -- could also be disk
