@@ -273,4 +273,7 @@ return {
   {
  'echasnovski/mini.nvim', version = '*'
   },
+  {
+    'nvim-pack/nvim-spectre'
+  },
 }

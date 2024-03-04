@@ -1,0 +1,12 @@
+local bufnr = vim.api.nvim_get_current_buf()
+vim.keymap.set('n','K',":RustLsp hover actions<CR>" ,{buffer = bufnr, desc = 'Hover Documentation'})
+vim.keymap.set('n','<leader>ca',":RustLsp codeAction<CR>" ,{buffer = bufnr, desc = 'Hover Documentation'})
+vim.keymap.set('n','<leader>ch',":Lspsaga incoming_calls<CR>" ,{buffer = bufnr, desc = '[C]all [H]ierarchy'})
+vim.keymap.set('n','<leader>fu',":Lspsaga finder<CR>" ,{buffer = bufnr, desc = '[F]ind [U]sage'})
+vim.keymap.set('n','<leader>pd',":Lspsaga peek_definition<CR>" ,{buffer = bufnr, desc = '[P]eek [D]efinition'})
+vim.keymap.set('n','<leader>oo',":Lspsaga outline<CR>" ,{buffer = bufnr, desc = '[O]pen [O]utline'})
+vim.keymap.set('n','<leader>rn',vim.lsp.buf.rename ,{buffer = bufnr, desc = '[R]e[n]ame'})
+vim.keymap.set('n','gd',require('telescope.builtin').lsp_definitions ,{buffer = bufnr, desc = '[G]oto [D]efinition'})
+vim.keymap.set('n','gd',require('telescope.builtin').lsp_references ,{buffer = bufnr, desc = '[G]oto [R]eferences'})
+vim.keymap.set('n','gd',require('telescope.builtin').lsp_type_definitions ,{buffer = bufnr, desc = '[D]ocument [S]ymbols'})
+
