@@ -53,6 +53,7 @@ return {
     end, { desc = 'Debug: Set Breakpoint' })
     vim.keymap.set("n","<leader>de",dapui.eval,{desc = "Debug: eval expression 2 time to step into it"})
     vim.keymap.set("n","<leader>df",dapui.float_element,{desc = "Debug: pop up floating element"})
+    vim.keymap.set("n","<leader>dt",dapui.toggle,{desc = "Debug: pop up floating element"})
 
     -- Dap UI setup
     -- For more information, see |:help nvim-dap-ui|

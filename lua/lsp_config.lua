@@ -96,6 +96,7 @@ mason_lspconfig.setup {
 
 
 mason_lspconfig.setup_handlers {
+  ["rust_analyzer"] = function() end,
   function(server_name)
     require('lspconfig')[server_name].setup(( {
       capabilities = capabilities,
@@ -107,11 +108,19 @@ mason_lspconfig.setup_handlers {
   end,
 }
 
+
 require('lspconfig').clangd.setup({
   capabilities = capabilities,
   cmd = require("clangd_config").cmd,
   on_attach = on_attach,
   filetypes = require("clangd_config").filetypes
+})
+
+
+require('lspconfig').rust_analyser.setup({
+  settings = {
+    ['rust-analyser'] = {}
+  }
 })
 
 
