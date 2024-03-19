@@ -108,4 +108,4 @@ require "noice_config"
 require "bufferline_config"
 require "worktree_config"
 require "mini_config"
-require "after.ftplugin.rust"
+--require 'after.ftplugin.rust'

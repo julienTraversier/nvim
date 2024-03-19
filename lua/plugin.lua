@@ -276,4 +276,7 @@ return {
   {
     'nvim-pack/nvim-spectre'
   },
+{ 'echasnovski/mini.align', version = '*' },
+  {'tamton-aquib/duck.nvim'},
+  {"p00f/clangd_extensions.nvim"},
 }
