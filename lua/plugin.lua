@@ -278,5 +278,5 @@ return {
   },
 { 'echasnovski/mini.align', version = '*' },
   {'tamton-aquib/duck.nvim'},
-  {"p00f/clangd_extensions.nvim"},
+  {"lvimuser/lsp-inlayhints.nvim"},
 }

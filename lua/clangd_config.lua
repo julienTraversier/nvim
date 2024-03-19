@@ -3,7 +3,6 @@ local local_cap = vim.lsp.protocol.make_client_capabilities()
 local util = require 'lspconfig.util'
 local_cap.offsetEncoding = { "utf-16" }
 
-require("clangd_extensions").setup()
 
 local root_files = {
 	'.clangd',
@@ -58,8 +57,7 @@ local on_attach = function(_, bufnr)
   vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
     vim.lsp.buf.format()
   end, { desc = 'Format current buffer with LSP' })
-  require("clangd_extensions.inlay_hints").setup_autocmd()
-  require("clangd_extensions.inlay_hints").set_inlay_hints()
+  require("lsp-inlayhints").on_attach(_, bufnr)
 end
 
 -- TODO: add clang-tidy to on_atach with clangd

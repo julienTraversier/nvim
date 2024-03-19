@@ -16,12 +16,12 @@ local on_attach = function(_, bufnr)
   end
 
   nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
---  nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
-  vim.keymap.set('n','<leader>ca',":Lspsaga code_action<CR>" ,{buffer = bufnr, desc = '[C]ode [A]ction'})
-  vim.keymap.set('n','<leader>ch',":Lspsaga incoming_calls<CR>" ,{buffer = bufnr, desc = '[C]all [H]ierarchy'})
-  vim.keymap.set('n','<leader>fu',":Lspsaga finder<CR>" ,{buffer = bufnr, desc = '[F]ind [U]sage'})
-  vim.keymap.set('n','<leader>pd',":Lspsaga peek_definition<CR>" ,{buffer = bufnr, desc = '[P]eek [D]efinition'})
-  vim.keymap.set('n','<leader>oo',":Lspsaga outline<CR>" ,{buffer = bufnr, desc = '[O]pen [O]utline'})
+  --  nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
+  vim.keymap.set('n', '<leader>ca', ":Lspsaga code_action<CR>", { buffer = bufnr, desc = '[C]ode [A]ction' })
+  vim.keymap.set('n', '<leader>ch', ":Lspsaga incoming_calls<CR>", { buffer = bufnr, desc = '[C]all [H]ierarchy' })
+  vim.keymap.set('n', '<leader>fu', ":Lspsaga finder<CR>", { buffer = bufnr, desc = '[F]ind [U]sage' })
+  vim.keymap.set('n', '<leader>pd', ":Lspsaga peek_definition<CR>", { buffer = bufnr, desc = '[P]eek [D]efinition' })
+  vim.keymap.set('n', '<leader>oo', ":Lspsaga outline<CR>", { buffer = bufnr, desc = '[O]pen [O]utline' })
 
   nmap('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
   nmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
@@ -32,7 +32,7 @@ local on_attach = function(_, bufnr)
 
   -- See `:help K` for why this keymap
   --nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
-  vim.keymap.set('n','K',":Lspsaga hover_doc<CR>" ,{buffer = bufnr, desc = 'Hover Documentation'})
+  vim.keymap.set('n', 'K', ":Lspsaga hover_doc<CR>", { buffer = bufnr, desc = 'Hover Documentation' })
   nmap('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
 
   -- Lesser used LSP functionality
@@ -47,12 +47,14 @@ local on_attach = function(_, bufnr)
   vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
     vim.lsp.buf.format()
   end, { desc = 'Format current buffer with LSP' })
+  require("lsp-inlayhints").on_attach(_, bufnr)
 end
 
 -- mason-lspconfig requires that these setup functions are called in this order
 -- before setting up the servers.
 require('mason').setup()
 require('mason-lspconfig').setup()
+require("lsp-inlayhints").setup()
 
 -- Enable the following language servers
 --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
@@ -98,7 +100,7 @@ mason_lspconfig.setup_handlers {
   ["rust_analyzer"] = function()
   end,
   function(server_name)
-    require('lspconfig')[server_name].setup(( {
+    require('lspconfig')[server_name].setup(({
       capabilities = capabilities,
       on_attach = on_attach,
       settings = servers[server_name],
@@ -130,3 +132,6 @@ require("lspsaga").setup({
     layout = "float"
   }
 })
+--setup rustacean
+require("rustacean_config")
+
