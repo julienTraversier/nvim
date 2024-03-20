@@ -51,9 +51,9 @@ return {
     vim.keymap.set('n', '<leader>B', function()
       dap.set_breakpoint(vim.fn.input 'Breakpoint condition: ')
     end, { desc = 'Debug: Set Breakpoint' })
-    vim.keymap.set("n","<leader>de",dapui.eval,{desc = "Debug: eval expression 2 time to step into it"})
-    vim.keymap.set("n","<leader>df",dapui.float_element,{desc = "Debug: pop up floating element"})
-    vim.keymap.set("n","<leader>dt",dapui.toggle,{desc = "Debug: pop up floating element"})
+    vim.keymap.set("n", "<leader>de", dapui.eval, { desc = "Debug: eval expression 2 time to step into it" })
+    vim.keymap.set("n", "<leader>df", dapui.float_element, { desc = "Debug: pop up floating element" })
+    vim.keymap.set("n", "<leader>dt", dapui.toggle, { desc = "Debug: pop up floating element" })
 
     -- Dap UI setup
     -- For more information, see |:help nvim-dap-ui|
@@ -87,12 +87,12 @@ return {
     require('dap-python').setup("~/.virtualenvs/debugpy/bin/python")
     dap.configurations.python = {
       {
-      type = "python",
-      request = "launch",
-      name = "launch file",
-      cwd = "${workspaceFolder}",
-      program = "${file}"
-    }
+        type = "python",
+        request = "launch",
+        name = "launch file",
+        cwd = "${workspaceFolder}",
+        program = "${file}"
+      }
     }
 
 
@@ -114,5 +114,17 @@ return {
         stopAtEntry = false,
       }
     }
-  end,
+    --dap.configurations.rust = {
+    --  {
+    --  name = 'Launch',
+    --  type = 'codelldb',
+    --  request = 'launch',
+    --  program = "${workspaceFolder}/target/debug/${file}",
+
+    --  cwd = '${workspaceFolder}',
+    --  stopOnEntry = false,
+    --  args = {},
+    --}
+  --}
+  end
 }
