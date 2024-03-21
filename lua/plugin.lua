@@ -282,4 +282,8 @@ return {
 { 'echasnovski/mini.align', version = '*' },
   {'tamton-aquib/duck.nvim'},
   {"lvimuser/lsp-inlayhints.nvim"},
+  {
+    "Badhi/nvim-treesitter-cpp-tools",
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
+  }
 }
