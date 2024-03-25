@@ -1,4 +1,3 @@
-
 -- [[ Configure nvim-cmp ]]
 -- See `:help cmp`
 local cmp = require 'cmp'
@@ -20,10 +19,15 @@ cmp.setup {
     completeopt = 'menu,menuone,noinsert'
   },
   formatting = {
-  format = function(entry, vim_item)
-    vim_item.abbr = string.sub(vim_item.abbr, 1, 50)
-    return vim_item
-  end
+    --format = function(entry, vim_item)
+    --  vim_item.abbr = string.sub(vim_item.abbr, 1, 20)
+    --  return vim_item
+    --end
+    format = function(_, vim_item)
+      vim_item.menu = ""
+      vim_item.kind = ""
+      return vim_item
+    end
   },
   mapping = cmp.mapping.preset.insert {
     ['<C-j>'] = cmp.mapping.select_next_item(),
@@ -53,6 +57,16 @@ cmp.setup {
         fallback()
       end
     end, { 'i', 's' }),
+  },
+  sorting = {
+    priority_weight = 1.0,
+    comparators = {
+      cmp.config.compare.offset,
+      cmp.config.compare.exact,
+      cmp.config.compare.score,
+      cmp.config.compare.recently_used,
+      cmp.config.compare.kind,
+    },
   },
   sources = {
     { name = 'nvim_lsp' },
