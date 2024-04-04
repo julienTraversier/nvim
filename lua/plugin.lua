@@ -1,3 +1,4 @@
+
 return {
   -- Git related plugins
   'tpope/vim-fugitive',
@@ -47,6 +48,7 @@ return {
 
       -- Adds a number of user-friendly snippets
       'rafamadriz/friendly-snippets',
+      'lukas-reineke/cmp-under-comparator',
     },
   },
 
@@ -169,25 +171,22 @@ return {
       vim.cmd.colorscheme 'catppuccin-latte'
     end
   },
-  -- Toggle Term
-  -- Added this plugin.
   {
     'akinsho/toggleterm.nvim',
     tag = "*",
     config = true
   },
   'ms-jpq/chadtree',
---  {
---    "nvim-tree/nvim-tree.lua",
---    version = "*",
---    lazy = false,
---    dependencies = {
---      "nvim-tree/nvim-web-devicons",
---    },
---    config = function()
---      require("nvim-tree").setup {}
---    end,
---  },
+  --{
+  --  "nvim-neo-tree/neo-tree.nvim",
+  --  branch = "v3.x",
+  --  dependencies = {
+  --    "nvim-lua/plenary.nvim",
+  --    "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+  --    "MunifTanjim/nui.nvim",
+  --    -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
+  --  }
+  --},
   {
     {
       "kdheepak/lazygit.nvim",
@@ -257,33 +256,41 @@ return {
       "rcarriga/nvim-notify",
     }
   },
-  "ThePrimeagen/harpoon",
-  'ThePrimeagen/git-worktree.nvim',
   {
-  'mrcjkb/rustaceanvim',
-  version = '^4', -- Recommended
-  ft = { 'rust' },
+    'mrcjkb/rustaceanvim',
+    version = '^4', -- Recommended
+    ft = { 'rust' },
   },
-{
-  "iamcco/markdown-preview.nvim",
-  cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-  build = "cd app && yarn install",
-  init = function()
-    vim.g.mkdp_filetypes = { "markdown" }
-  end,
-  ft = { "markdown" },
-},
   {
- 'echasnovski/mini.nvim', version = '*'
+    'echasnovski/mini.nvim', version = '*'
   },
   {
     'nvim-pack/nvim-spectre'
   },
-{ 'echasnovski/mini.align', version = '*' },
-  {'tamton-aquib/duck.nvim'},
-  {"lvimuser/lsp-inlayhints.nvim"},
+  { 'echasnovski/mini.align',      version = '*' },
+  { 'tamton-aquib/duck.nvim' },
+  { "lvimuser/lsp-inlayhints.nvim" },
   {
     "Badhi/nvim-treesitter-cpp-tools",
     dependencies = { "nvim-treesitter/nvim-treesitter" },
+  },
+  {
+    "folke/trouble.nvim",
+    branch = 'dev',
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+  },
+  {
+    "folke/edgy.nvim",
+    -- event = "VeryLazy",
+  },
+  {
+    "folke/todo-comments.nvim",
+    opts = {}
+  },
+  {
+    "echasnovski/mini.animate"
+  },
+  {
+  "hedyhli/outline.nvim",
   }
 }

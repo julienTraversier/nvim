@@ -20,6 +20,7 @@ return {
 
     -- Add your own debuggers here
     "mfussenegger/nvim-dap-python",
+    "nvim-neotest/nvim-nio"
   },
   config = function()
     local dap = require 'dap'
