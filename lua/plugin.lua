@@ -1,4 +1,3 @@
-
 return {
   -- Git related plugins
   'tpope/vim-fugitive',
@@ -291,6 +290,16 @@ return {
     "echasnovski/mini.animate"
   },
   {
-  "hedyhli/outline.nvim",
+    "hedyhli/outline.nvim",
+  },
+  {
+    "Exafunction/codeium.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "hrsh7th/nvim-cmp",
+    },
+  },
+  {
+  "onsails/lspkind.nvim"
   }
 }

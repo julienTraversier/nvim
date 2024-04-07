@@ -23,11 +23,17 @@ cmp.setup {
     --  vim_item.abbr = string.sub(vim_item.abbr, 1, 20)
     --  return vim_item
     --end
-    format = function(_, vim_item)
-      vim_item.menu = ""
-      vim_item.kind = ""
-      return vim_item
-    end
+    --format = function(_, vim_item)
+    --  vim_item.menu = ""
+    --  vim_item.kind = ""
+    --  return vim_item
+    --end,
+    format = require('lspkind').cmp_format({
+            mode = "symbol",
+            maxwidth = 50,
+            ellipsis_char = '...',
+            symbol_map = { Codeium = "", }
+        })
   },
   mapping = cmp.mapping.preset.insert {
     ['<C-j>'] = cmp.mapping.select_next_item(),
@@ -72,5 +78,6 @@ cmp.setup {
   sources = {
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
+    { name = 'codeium' }
   },
 }

@@ -106,4 +106,5 @@ require "bufferline_config"
 require "mini_config"
 require "trouble_config"
 require "edgy_config"
+require "codeium_config"
 --require 'after.ftplugin.rust'
