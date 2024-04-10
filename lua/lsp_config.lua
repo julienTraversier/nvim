@@ -115,7 +115,6 @@ require('lspconfig').clangd.setup({
   on_attach = require("clangd_config").on_attach,
   filetypes = require("clangd_config").filetypes
 })
-require("outline").setup()
 require("lspsaga").setup({
   finder = {
     keys = {
@@ -129,7 +128,7 @@ require("lspsaga").setup({
     }
   },
   outline = {
-   layout = "float"
+    layout = "float"
   }
 })
 --setup rustacean

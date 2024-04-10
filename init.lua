@@ -87,8 +87,8 @@ require('lazy').setup({
 require "catpuccin_config"
 require("telescope_config")
 require("treesitter_config")
-require("lsp_config")
 require "cmp_config"
+require("lsp_config")
 require("which-key")
 require "option"
 require "keybind"
@@ -105,6 +105,5 @@ require "noice_config"
 require "bufferline_config"
 require "mini_config"
 require "trouble_config"
-require "edgy_config"
-require "codeium_config"
+--require "codeium_config"
 --require 'after.ftplugin.rust'

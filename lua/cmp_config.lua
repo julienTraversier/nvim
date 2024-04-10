@@ -29,11 +29,17 @@ cmp.setup {
     --  return vim_item
     --end,
     format = require('lspkind').cmp_format({
-            mode = "symbol",
-            maxwidth = 50,
-            ellipsis_char = '...',
-            symbol_map = { Codeium = "", }
-        })
+      before = function(entry, vim_item)
+        vim_item.abbr = string.sub(vim_item.abbr, 1, 50)
+        vim_item.menu = ""
+        --vim_item.kind = ""
+        return vim_item
+      end,
+      mode = "symbol",
+      maxwidth = 50,
+      ellipsis_char = '...',
+      symbol_map = { Codeium = "", }
+    })
   },
   mapping = cmp.mapping.preset.insert {
     ['<C-j>'] = cmp.mapping.select_next_item(),
