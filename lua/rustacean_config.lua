@@ -1,6 +1,6 @@
 
 local on_attach = function(client,bufnr)
-  require("lsp-inlayhints").on_attach(client, bufnr)
+  --require("lsp-inlayhints").on_attach(client, bufnr)
   vim.api.nvim_set_keymap('n','K',":RustLsp hover actions<CR>" , {noremap = true, silent = true, desc="Hover Documentation"})
   vim.api.nvim_set_keymap('n','<leader>ca',":RustLsp codeAction<CR>" ,                {noremap = true,silent = true, desc = 'Code actions'})
   vim.api.nvim_set_keymap('n','<leader>ch',":Lspsaga incoming_calls<CR>" ,            {noremap = true,silent = true, desc = '[C]all [H]ierarchy'})
@@ -21,7 +21,9 @@ local liblldb_path = extension_path .. 'lldb/lib/liblldb.so'
 local cfg = require('rustaceanvim.config')
 vim.g.rustaceanvim = {
   server = {
-    on_attach = on_attach
+    on_attach = on_attach,
+    inlay_hints = {enable = true},
+    codelens = {enable = true},
   },
   dap = {
       adapter = cfg.get_codelldb_adapter(codelldb_path, liblldb_path),

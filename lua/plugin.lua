@@ -287,5 +287,11 @@ return {
   },
   {
   "onsails/lspkind.nvim"
-  }
+  },
+  {
+  "neanias/everforest-nvim",
+  },
+  {
+    'p00f/clangd_extensions.nvim'
+  },
 }

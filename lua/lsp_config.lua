@@ -47,14 +47,16 @@ local on_attach = function(_, bufnr)
   vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
     vim.lsp.buf.format()
   end, { desc = 'Format current buffer with LSP' })
-  require("lsp-inlayhints").on_attach(_, bufnr)
+  --require("lsp-inlayhints").on_attach(_, bufnr)
 end
 
 -- mason-lspconfig requires that these setup functions are called in this order
 -- before setting up the servers.
 require('mason').setup()
 require('mason-lspconfig').setup()
-require("lsp-inlayhints").setup()
+vim.lsp.codelens.refresh()
+vim.lsp.inlay_hint.enable(true)
+--require("lsp-inlayhints").setup()
 
 -- Enable the following language servers
 --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
@@ -77,6 +79,10 @@ local servers = {
     Lua = {
       workspace = { checkThirdParty = false },
       telemetry = { enable = false },
+      hint = {
+        enable = true,
+        arrayIndex = "Disable",
+      }
     },
   },
 }
@@ -106,15 +112,19 @@ mason_lspconfig.setup_handlers {
       settings = servers[server_name],
       filetypes = (servers[server_name] or {}).filetypes,
       cmd = (servers[server_name] or {}).cmd,
+      inlay_hints = {enable = true},
+      codelens = {enable = true},
     }))
   end,
 }
-require('lspconfig').clangd.setup({
-  capabilities = capabilities,
-  cmd = require("clangd_config").cmd,
-  on_attach = require("clangd_config").on_attach,
-  filetypes = require("clangd_config").filetypes
-})
+--require('lspconfig').clangd.setup({
+--  capabilities = capabilities,
+--  cmd = require("clangd_config").cmd,
+--  on_attach = require("clangd_config").on_attach,
+--  filetypes = require("clangd_config").filetypes,
+--  inlay_hints = {enable = true},
+--  codelens = {enable = true},
+--})
 require("lspsaga").setup({
   finder = {
     keys = {
@@ -133,4 +143,3 @@ require("lspsaga").setup({
 })
 --setup rustacean
 require("rustacean_config")
-

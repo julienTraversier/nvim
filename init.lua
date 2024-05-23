@@ -105,5 +105,6 @@ require "noice_config"
 require "bufferline_config"
 require "mini_config"
 require "trouble_config"
+require "everforest_config"
 --require "codeium_config"
 --require 'after.ftplugin.rust'

@@ -102,15 +102,44 @@ return {
       type = 'executable',
       command = '/home/jtraversier/Téléchargements/extension/debugAdapters/bin/OpenDebugAD7',
     }
+--    dap.adapters.gdb = {
+--      type = "executable",
+--      command = "gdb",
+--      args = { "-i", "dap" }
+--    }
+--    dap.configurations.c = {
+--  {
+--    name = "Launch",
+--    type = "gdb",
+--    request = "launch",
+--    program = function()
+--      return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+--    end,
+--    cwd = "${workspaceFolder}",
+--    stopAtBeginningOfMainSubprogram = false,
+--  },
+--}
+--    dap.configurations.cpp = {
+--  {
+--    name = "Launch",
+--    type = "gdb",
+--    request = "launch",
+--    program = function()
+--      return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+--    end,
+--    cwd = "${workspaceFolder}",
+--    stopAtBeginningOfMainSubprogram = false,
+--  },
+--}
     dap.configurations.c = {
       {
         name = "Launch file",
         type = "cppdbg",
         request = "launch",
-        --program = function()
-        --  return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
-        --end,
-        program = "${workspaceFolder}/../build_x86/fiber-optic/Fiber_Optic",
+        program = function()
+          return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+        end,
+        --program = "${workspaceFolder}/../build_x86/fiber-optic/Fiber_Optic",
         cwd = '${workspaceFolder}',
         stopAtEntry = false,
       }
@@ -120,10 +149,10 @@ return {
         name = "Launch file",
         type = "cppdbg",
         request = "launch",
-        --program = function()
-        --  return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
-        --end,
-        program = "${workspaceFolder}/../build_x86/fiber-optic/Fiber_Optic",
+        program = function()
+          return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+        end,
+        --program = "${workspaceFolder}/../build_x86/fiber-optic/Fiber_Optic",
         cwd = '${workspaceFolder}',
         stopAtEntry = false,
       }

@@ -57,7 +57,7 @@ local on_attach = function(_, bufnr)
   vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
     vim.lsp.buf.format()
   end, { desc = 'Format current buffer with LSP' })
-  require("lsp-inlayhints").on_attach(_, bufnr)
+  --require("lsp-inlayhints").on_attach(_, bufnr)
 end
 
 -- TODO: add clang-tidy to on_atach with clangd
@@ -71,10 +71,11 @@ return {
 		"--completion-parse=always",
 		"--completion-style=bundled",
 		"--debug-origin",
-		"--enable-config", -- clangd 11+ supports reading from .clangd configuration file
+		"--enable-config=true", -- clangd 11+ supports reading from .clangd configuration file
 		"--fallback-style=GNU",
 		"--function-arg-placeholders",
 		"--header-insertion=iwyu",
+		--"--inlay-hints=true",
 		"--pch-storage=memory", -- could also be disk
 		--"-j=4",		-- number of workers
 		-- "--resource-dir="
