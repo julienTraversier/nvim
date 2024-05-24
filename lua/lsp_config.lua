@@ -71,10 +71,9 @@ local servers = {
     --opts = require("clangd_config"),
   },
   -- gopls = {},
-  pyright = {},
   -- tsserver = {},
   -- html = { filetypes = { 'html', 'twig', 'hbs'} },
-
+  pyright = {},
   lua_ls = {
     Lua = {
       workspace = { checkThirdParty = false },
@@ -117,14 +116,16 @@ mason_lspconfig.setup_handlers {
     }))
   end,
 }
---require('lspconfig').clangd.setup({
---  capabilities = capabilities,
---  cmd = require("clangd_config").cmd,
---  on_attach = require("clangd_config").on_attach,
---  filetypes = require("clangd_config").filetypes,
---  inlay_hints = {enable = true},
---  codelens = {enable = true},
---})
+
+require('lspconfig').clangd.setup({
+  capabilities = capabilities,
+  cmd = require("clangd_config").cmd,
+  on_attach = require("clangd_config").on_attach,
+  filetypes = require("clangd_config").filetypes,
+  inlay_hints = {enable = true},
+  codelens = {enable = true},
+})
+
 require("lspsaga").setup({
   finder = {
     keys = {

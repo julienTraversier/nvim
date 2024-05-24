@@ -84,7 +84,6 @@ require('lazy').setup({
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
-require "catpuccin_config"
 require("telescope_config")
 require("treesitter_config")
 require "cmp_config"
@@ -105,6 +104,5 @@ require "noice_config"
 require "bufferline_config"
 require "mini_config"
 require "trouble_config"
-require "everforest_config"
 --require "codeium_config"
 --require 'after.ftplugin.rust'

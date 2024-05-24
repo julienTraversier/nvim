@@ -101,14 +101,6 @@ return {
   {
     -- Set lualine as statusline
     'nvim-lualine/lualine.nvim',
-    opts = {
-      theme = 'catppucin',
-      options = {
-        icons_enabled = true,
-        component_separators = ' ',
-        section_separators = { left = "", right = "" },
-      },
-    },
   },
 
   {
@@ -294,4 +286,5 @@ return {
   {
     'p00f/clangd_extensions.nvim'
   },
+  { "diegoulloao/neofusion.nvim", priority = 1000 , config = true, opts = ... }
 }
