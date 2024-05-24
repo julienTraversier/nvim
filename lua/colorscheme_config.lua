@@ -1,8 +1,9 @@
 --vim.cmd.colorscheme 'catppuccin-mocha'
 require("neofusion").setup()
 require("everforest").setup({})
+require("cyberdream").setup()
 vim.o.background = "dark"
-vim.cmd([[ colorscheme neofusion ]])
+vim.cmd([[ colorscheme cyberdream ]])
 
 require("catppuccin").setup({
     integrations = {

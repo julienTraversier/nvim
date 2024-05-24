@@ -286,5 +286,10 @@ return {
   {
     'p00f/clangd_extensions.nvim'
   },
-  { "diegoulloao/neofusion.nvim", priority = 1000 , config = true, opts = ... }
+  { "diegoulloao/neofusion.nvim", priority = 1000 , config = true, opts = ... },
+  {
+    "scottmckendry/cyberdream.nvim",
+    lazy = false,
+    priority = 1000,
+  },
 }
