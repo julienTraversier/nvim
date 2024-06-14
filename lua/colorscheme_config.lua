@@ -1,7 +1,9 @@
 --vim.cmd.colorscheme 'catppuccin-mocha'
 require("neofusion").setup()
 require("everforest").setup({})
-require("cyberdream").setup()
+require("cyberdream").setup({
+    transparent = true,
+})
 vim.o.background = "dark"
 vim.cmd([[ colorscheme cyberdream ]])
 

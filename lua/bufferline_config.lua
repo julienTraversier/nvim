@@ -88,7 +88,7 @@ bufferline.setup {
         move_wraps_at_ends = false,   -- whether or not the move command "wraps" at the first or last position
         -- can also be a table containing 2 custom separators
         -- [focused and unfocused]. eg: { '|', '|' }
-        separator_style = "slant",
+        --separator_style = "slant",
         enforce_regular_tabs = true,
         always_show_bufferline = true,
         hover = {

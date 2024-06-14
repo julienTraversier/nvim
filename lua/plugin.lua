@@ -44,6 +44,8 @@ return {
 
       -- Adds LSP completion capabilities
       'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-path',
 
       -- Adds a number of user-friendly snippets
       'rafamadriz/friendly-snippets',
@@ -292,4 +294,14 @@ return {
     lazy = false,
     priority = 1000,
   },
+  {
+    "tris203/precognition.nvim",
+  },
+  {
+      'rmagatti/auto-session',
+  },
+  {
+    "danymat/neogen",
+     config = true,
+  }
 }
