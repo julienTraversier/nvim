@@ -52,12 +52,6 @@ local on_attach = function(_, bufnr)
   nmap('<leader>wl', function()
     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
   end, '[W]orkspace [L]ist Folders')
-
-  -- Create a command `:Format` local to the LSP buffer
-  vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
-    vim.lsp.buf.format()
-  end, { desc = 'Format current buffer with LSP' })
-  --require("lsp-inlayhints").on_attach(_, bufnr)
 end
 
 -- TODO: add clang-tidy to on_atach with clangd
@@ -69,10 +63,9 @@ return {
 		"--clang-tidy",
 		"--compile_args_from=filesystem", -- lsp-> does not come from compie_commands.json
 		"--completion-parse=always",
-		"--completion-style=bundled",
+		"--completion-style=detailed",
 		"--debug-origin",
 		"--enable-config=true", -- clangd 11+ supports reading from .clangd configuration file
-		"--fallback-style=GNU",
 		"--function-arg-placeholders",
 		"--header-insertion=iwyu",
 		--"--inlay-hints=true",

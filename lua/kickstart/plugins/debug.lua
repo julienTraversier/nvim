@@ -154,6 +154,9 @@ return {
         end,
         --program = "${workspaceFolder}/../build_x86/fiber-optic/Fiber_Optic",
         cwd = '${workspaceFolder}',
+        args = {
+           "--enable-pretty-printing",
+        },
         stopAtEntry = false,
       }
     }

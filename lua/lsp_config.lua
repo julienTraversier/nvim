@@ -17,11 +17,11 @@ local on_attach = function(_, bufnr)
 
   nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
   --  nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
-  vim.keymap.set('n', '<leader>ca', ":Lspsaga code_action<CR>", { buffer = bufnr, desc = '[C]ode [A]ction' })
-  vim.keymap.set('n', '<leader>ch', ":Lspsaga incoming_calls<CR>", { buffer = bufnr, desc = '[C]all [H]ierarchy' })
-  vim.keymap.set('n', '<leader>fu', ":Lspsaga finder<CR>", { buffer = bufnr, desc = '[F]ind [U]sage' })
-  vim.keymap.set('n', '<leader>pd', ":Lspsaga peek_definition<CR>", { buffer = bufnr, desc = '[P]eek [D]efinition' })
-  vim.keymap.set('n', '<leader>oo', ":Lspsaga outline<CR>", { buffer = bufnr, desc = '[O]pen [O]utline' })
+  vim.keymap.set('n', '<leader>ca', ':Lspsaga code_action<CR>', { buffer = bufnr, desc = '[C]ode [A]ction' })
+  vim.keymap.set('n', '<leader>ch', ':Lspsaga incoming_calls<CR>', { buffer = bufnr, desc = '[C]all [H]ierarchy' })
+  vim.keymap.set('n', '<leader>fu', ':Lspsaga finder<CR>', { buffer = bufnr, desc = '[F]ind [U]sage' })
+  vim.keymap.set('n', '<leader>pd', ':Lspsaga peek_definition<CR>', { buffer = bufnr, desc = '[P]eek [D]efinition' })
+  vim.keymap.set('n', '<leader>oo', ':Lspsaga outline<CR>', { buffer = bufnr, desc = '[O]pen [O]utline' })
 
   nmap('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
   nmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
@@ -32,7 +32,7 @@ local on_attach = function(_, bufnr)
 
   -- See `:help K` for why this keymap
   --nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
-  vim.keymap.set('n', 'K', ":Lspsaga hover_doc<CR>", { buffer = bufnr, desc = 'Hover Documentation' })
+  vim.keymap.set('n', 'K', ':Lspsaga hover_doc<CR>', { buffer = bufnr, desc = 'Hover Documentation' })
   nmap('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
 
   -- Lesser used LSP functionality
@@ -44,9 +44,10 @@ local on_attach = function(_, bufnr)
   end, '[W]orkspace [L]ist Folders')
 
   -- Create a command `:Format` local to the LSP buffer
-  vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
-    vim.lsp.buf.format()
-  end, { desc = 'Format current buffer with LSP' })
+  --vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
+  --  require('conform').format {}
+  --end, { desc = 'Format current buffer with LSP' })
+
   --require("lsp-inlayhints").on_attach(_, bufnr)
 end
 
@@ -74,14 +75,15 @@ local servers = {
   -- tsserver = {},
   -- html = { filetypes = { 'html', 'twig', 'hbs'} },
   pyright = {},
+  -- ruff_lsp = {},
   lua_ls = {
     Lua = {
       workspace = { checkThirdParty = false },
       telemetry = { enable = false },
       hint = {
         enable = true,
-        arrayIndex = "Disable",
-      }
+        arrayIndex = 'Disable',
+      },
     },
   },
 }
@@ -100,47 +102,61 @@ mason_lspconfig.setup {
   ensure_installed = vim.tbl_keys(servers),
 }
 
-
 mason_lspconfig.setup_handlers {
-  ["rust_analyzer"] = function()
-  end,
+  ['rust_analyzer'] = function() end,
   function(server_name)
-    require('lspconfig')[server_name].setup(({
+    require('lspconfig')[server_name].setup {
       capabilities = capabilities,
       on_attach = on_attach,
       settings = servers[server_name],
       filetypes = (servers[server_name] or {}).filetypes,
       cmd = (servers[server_name] or {}).cmd,
-      inlay_hints = {enable = true},
-      codelens = {enable = true},
-    }))
+      inlay_hints = { enable = true },
+      codelens = { enable = true },
+    }
   end,
 }
 
-require('lspconfig').clangd.setup({
+require('lspconfig').clangd.setup {
   capabilities = capabilities,
-  cmd = require("clangd_config").cmd,
-  on_attach = require("clangd_config").on_attach,
-  filetypes = require("clangd_config").filetypes,
-  inlay_hints = {enable = true},
-  codelens = {enable = true},
-})
+  cmd = require('clangd_config').cmd,
+  on_attach = require('clangd_config').on_attach,
+  filetypes = require('clangd_config').filetypes,
+  inlay_hints = { enable = true },
+  codelens = { enable = true },
+}
 
-require("lspsaga").setup({
+require('lspsaga').setup {
   finder = {
     keys = {
       shuttle = '<Tab>',
       toggle_or_open = 'e',
-    }
+    },
   },
   callhierarchy = {
     keys = {
       shuttle = '<Tab>',
-    }
+    },
   },
   outline = {
-    layout = "float"
-  }
-})
+    layout = 'float',
+  },
+}
+
+vim.api.nvim_create_user_command('Format', function(args)
+  local range = nil
+  if args.count ~= -1 then
+    local end_line = vim.api.nvim_buf_get_lines(0, args.line2 - 1, args.line2, true)[1]
+    range = {
+      start = { args.line1, 0 },
+      ['end'] = { args.line2, end_line:len() },
+    }
+  end
+  require('conform').format { async = true, lsp_format = 'fallback', range = range }
+end, { range = true })
+
 --setup rustacean
-require("rustacean_config")
+require 'rustacean_config'
+return {
+  on_attach = on_attach,
+}

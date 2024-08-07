@@ -5,6 +5,7 @@ local luasnip = require 'luasnip'
 require('luasnip.loaders.from_vscode').lazy_load()
 luasnip.config.setup {}
 
+vim.api.nvim_set_hl(0, "CmpItemKindCody", { fg = "Red" })
 cmp.setup {
   snippet = {
     expand = function(args)
@@ -38,7 +39,7 @@ cmp.setup {
       mode = "symbol",
       maxwidth = 70,
       ellipsis_char = '...',
-      symbol_map = { Codeium = "", }
+      symbol_map = { Codeium = "", cody="" },
     })
   },
   mapping = cmp.mapping.preset.insert {
@@ -85,10 +86,11 @@ cmp.setup {
     },
   },
   sources = {
-    { name = 'nvim_lsp' },
-    { name = 'luasnip' },
+    {name ="cody", priority=10},
+    { name = 'nvim_lsp', priority=8 },
+    { name = 'luasnip', priority=7 },
     { name = 'codeium' },
-    { name = 'buffer' },
+    { name = 'buffer', priority = 1 },
     { name = 'path' }
   },
 }

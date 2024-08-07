@@ -103,7 +103,7 @@ return {
   {
     -- Set lualine as statusline
     'nvim-lualine/lualine.nvim',
-    dependencies = {"echasnovski/mini.icons"}
+    dependencies = { "echasnovski/mini.icons" }
   },
 
   {
@@ -207,6 +207,7 @@ return {
   {
     'linux-cultist/venv-selector.nvim',
     dependencies = { 'neovim/nvim-lspconfig', 'nvim-telescope/telescope.nvim', 'mfussenegger/nvim-dap-python' },
+    branch = "regexp",
     config = function()
       require('venv-selector').setup {
         -- Your options go here
@@ -215,12 +216,6 @@ return {
       }
     end,
     event = 'VeryLazy', -- Optional: needed only if you want to type `:VenvSelect` without a keymapping
-    keys = {
-      -- Keymap to open VenvSelector to pick a venv.
-      { '<leader>vs', '<cmd>VenvSelect<cr>' },
-      -- Keymap to retrieve the venv from a cache (the one previously used for the same project directory).
-      { '<leader>vc', '<cmd>VenvSelectCached<cr>' },
-    },
   },
   {
     "folke/noice.nvim",
@@ -257,7 +252,7 @@ return {
   },
   {
     "folke/trouble.nvim",
-    branch = 'dev',
+    branch = 'main',
     dependencies = { "nvim-tree/nvim-web-devicons" },
   },
   {
@@ -278,15 +273,15 @@ return {
     },
   },
   {
-  "onsails/lspkind.nvim"
+    "onsails/lspkind.nvim"
   },
   {
-  "neanias/everforest-nvim",
+    "neanias/everforest-nvim",
   },
   {
     'p00f/clangd_extensions.nvim'
   },
-  { "diegoulloao/neofusion.nvim", priority = 1000 , config = true, opts = ... },
+  { "diegoulloao/neofusion.nvim", priority = 1000, config = true, opts = ... },
   {
     "scottmckendry/cyberdream.nvim",
     lazy = false,
@@ -294,12 +289,35 @@ return {
   },
   {
     "tris203/precognition.nvim",
+    branch = "inlay_hints",
   },
   {
-      'rmagatti/auto-session',
+    'rmagatti/auto-session',
   },
   {
     "danymat/neogen",
-     config = true,
+    config = true,
+  },
+  {
+    "ggandor/leap.nvim",
+  },
+  {
+    "sourcegraph/sg.nvim",
+    dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope.nvim" },
+    run = 'nvim -l build/init.lua'
+  },
+  {
+    'MeanderingProgrammer/markdown.nvim',
+    main = "render-markdown",
+    opts = {},
+    name = 'render-markdown',                                                      -- Only needed if you have another plugin named markdown.nvim
+    dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.nvim' }, -- if you use the mini.nvim suite
+    -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.icons' }, -- if you use standalone mini plugins
+    -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
+  },
+  {
+    'stevearc/conform.nvim',
+    opts = {},
   }
+
 }

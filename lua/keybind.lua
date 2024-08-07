@@ -77,18 +77,9 @@ keymap("n", "<F4>", "<Cmd>ClangdSwitchSourceHeader<CR>", opts)
 --keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 --
 --harpoon 
+--w
 
+keymap("n", "<leader>xx", ":Trouble diagnostics toggle<CR>", opts)
 
-keymap("n", "<leader>ht", ":lua require('harpoon.ui').toggle_quick_menu()<CR>", opts)
-keymap("n", "<leader>hn", ":lua require('harpoon.ui').nav_next()<CR>", opts)
-keymap("n", "<leader>hp", ":lua require('harpoon.ui').nav_prev()<CR>", opts)
-keymap("n", "<leader>ha", ":lua require('harpoon.mark').add_file()<CR>", opts)
-
-keymap("n", "<leader>h&", ":lua require('harpoon.ui').nav_file(1)<CR>", opts)
-keymap("n", "<leader>hé", ":lua require('harpoon.ui').nav_file(2)<CR>", opts)
-keymap("n", '<leader>h"', ":lua require('harpoon.ui').nav_file(3)<CR>", opts)
-keymap("n", "<leader>h'", ":lua require('harpoon.ui').nav_file(4)<CR>", opts)
-keymap("n", "<leader>h(", ":lua require('harpoon.ui').nav_file(5)<CR>", opts)
-keymap("n", "<leader>hsm", ":Telescope harpoon marks<CR>", opts)
 
 

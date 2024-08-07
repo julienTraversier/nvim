@@ -104,8 +104,12 @@ require "noice_config"
 require "bufferline_config"
 require "mini_config"
 require "trouble_config"
-require "precognition_config"
+-- require "precognition_config"
 require("autosession_config")
 require("neogen_config")
+require("leap_config")
+require("sourcegraph_config")
+require("conform_config")
+-- require ("language.python.lsp_python_config")
 --require "codeium_config"
 --require 'after.ftplugin.rust'
