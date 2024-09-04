@@ -318,6 +318,9 @@ return {
   {
     'stevearc/conform.nvim',
     opts = {},
+  },
+  {
+    'sindrets/diffview.nvim'
   }
 
 }
