@@ -27,12 +27,12 @@ return {
   {
     'nvimdev/lspsaga.nvim',
     config = function()
-      require('lspsaga').setup({})
+      require('lspsaga').setup {}
     end,
     dependencies = {
       'nvim-treesitter/nvim-treesitter', -- optional
-      'nvim-tree/nvim-web-devicons'      -- optional
-    }
+      'nvim-tree/nvim-web-devicons', -- optional
+    },
   },
   {
     -- Autocompletion
@@ -54,7 +54,7 @@ return {
   },
 
   -- Useful plugin to show you pending keybinds.
-  { 'folke/which-key.nvim',  opts = {} },
+  { 'folke/which-key.nvim', opts = {} },
   {
     -- Adds git related signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
@@ -97,13 +97,13 @@ return {
   {
     -- Theme inspired by Atom
     'navarasu/onedark.nvim',
-    priority = 1000
+    priority = 1000,
   },
   --'freddiehaddad/feline.nvim',
   {
     -- Set lualine as statusline
     'nvim-lualine/lualine.nvim',
-    dependencies = { "echasnovski/mini.icons" }
+    dependencies = { 'echasnovski/mini.icons' },
   },
 
   {
@@ -137,8 +137,8 @@ return {
         end,
       },
       {
-        "nvim-telescope/telescope-live-grep-args.nvim"
-      }
+        'nvim-telescope/telescope-live-grep-args.nvim',
+      },
     },
   },
 
@@ -153,61 +153,61 @@ return {
   {
     'nvimdev/dashboard-nvim',
     event = 'VimEnter',
-    dependencies = { { 'nvim-tree/nvim-web-devicons' } }
+    dependencies = { { 'nvim-tree/nvim-web-devicons' } },
   },
   -- Colorscheme
   'folke/tokyonight.nvim',
   {
-    "catppuccin/nvim",
-    name = "catppuccin",
+    'catppuccin/nvim',
+    name = 'catppuccin',
     priority = 1000,
   },
   {
     'akinsho/toggleterm.nvim',
-    tag = "*",
-    config = true
+    tag = '*',
+    config = true,
   },
   'ms-jpq/chadtree',
   {
     {
-      "kdheepak/lazygit.nvim",
+      'kdheepak/lazygit.nvim',
       dependencies = {
-        "nvim-telescope/telescope.nvim",
-        "nvim-lua/plenary.nvim"
+        'nvim-telescope/telescope.nvim',
+        'nvim-lua/plenary.nvim',
       },
       config = function()
-        require("telescope").load_extension("lazygit")
-      end
-    }
+        require('telescope').load_extension 'lazygit'
+      end,
+    },
   },
-  "tpope/vim-fugitive",
-  "rhysd/git-messenger.vim",
-  "jiangmiao/auto-pairs",
+  'tpope/vim-fugitive',
+  'rhysd/git-messenger.vim',
+  'jiangmiao/auto-pairs',
   {
-    "utilyre/barbecue.nvim",
-    name = "barbecue",
-    version = "*",
+    'utilyre/barbecue.nvim',
+    name = 'barbecue',
+    version = '*',
     dependencies = {
-      "SmiteshP/nvim-navic",
-      "nvim-tree/nvim-web-devicons", -- optional dependency
+      'SmiteshP/nvim-navic',
+      'nvim-tree/nvim-web-devicons', -- optional dependency
     },
     opts = {
       -- configurations go here
     },
   },
-  { "karb94/neoscroll.nvim" },
+  { 'karb94/neoscroll.nvim' },
   'mfussenegger/nvim-lint',
   {
-    "kylechui/nvim-surround",
-    version = "*", -- Use for stability; omit to use `main` branch for the latest features
-    event = "VeryLazy",
+    'kylechui/nvim-surround',
+    version = '*', -- Use for stability; omit to use `main` branch for the latest features
+    event = 'VeryLazy',
   },
-  { 'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons' },
-  { "yamatsum/nvim-cursorline" },
+  { 'akinsho/bufferline.nvim', version = '*', dependencies = 'nvim-tree/nvim-web-devicons' },
+  { 'yamatsum/nvim-cursorline' },
   {
     'linux-cultist/venv-selector.nvim',
     dependencies = { 'neovim/nvim-lspconfig', 'nvim-telescope/telescope.nvim', 'mfussenegger/nvim-dap-python' },
-    branch = "regexp",
+    branch = 'regexp',
     config = function()
       require('venv-selector').setup {
         -- Your options go here
@@ -218,19 +218,19 @@ return {
     event = 'VeryLazy', -- Optional: needed only if you want to type `:VenvSelect` without a keymapping
   },
   {
-    "folke/noice.nvim",
-    event = "VeryLazy",
+    'folke/noice.nvim',
+    event = 'VeryLazy',
     opts = {
       -- add any options here
     },
     dependencies = {
       -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-      "MunifTanjim/nui.nvim",
+      'MunifTanjim/nui.nvim',
       -- OPTIONAL:
       --   `nvim-notify` is only needed, if you want to use the notification view.
       --   If not available, we use `mini` as the fallback
-      "rcarriga/nvim-notify",
-    }
+      'rcarriga/nvim-notify',
+    },
   },
   {
     'mrcjkb/rustaceanvim',
@@ -238,79 +238,80 @@ return {
     ft = { 'rust' },
   },
   {
-    'echasnovski/mini.nvim', version = '*'
+    'echasnovski/mini.nvim',
+    version = '*',
   },
   {
-    'nvim-pack/nvim-spectre'
+    'nvim-pack/nvim-spectre',
   },
-  { 'echasnovski/mini.align',      version = '*' },
+  { 'echasnovski/mini.align', version = '*' },
   { 'tamton-aquib/duck.nvim' },
-  { "lvimuser/lsp-inlayhints.nvim" },
+  { 'lvimuser/lsp-inlayhints.nvim' },
   {
-    "Badhi/nvim-treesitter-cpp-tools",
-    dependencies = { "nvim-treesitter/nvim-treesitter" },
+    'Badhi/nvim-treesitter-cpp-tools',
+    dependencies = { 'nvim-treesitter/nvim-treesitter' },
   },
   {
-    "folke/trouble.nvim",
+    'folke/trouble.nvim',
     branch = 'main',
-    dependencies = { "nvim-tree/nvim-web-devicons" },
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
   },
   {
-    "folke/todo-comments.nvim",
-    opts = {}
+    'folke/todo-comments.nvim',
+    opts = {},
   },
   {
-    "echasnovski/mini.animate"
+    'echasnovski/mini.animate',
   },
   {
-    "hedyhli/outline.nvim",
+    'hedyhli/outline.nvim',
   },
   {
-    "Exafunction/codeium.nvim",
+    'Exafunction/codeium.nvim',
     dependencies = {
-      "nvim-lua/plenary.nvim",
-      "hrsh7th/nvim-cmp",
+      'nvim-lua/plenary.nvim',
+      'hrsh7th/nvim-cmp',
     },
   },
   {
-    "onsails/lspkind.nvim"
+    'onsails/lspkind.nvim',
   },
   {
-    "neanias/everforest-nvim",
+    'neanias/everforest-nvim',
   },
   {
-    'p00f/clangd_extensions.nvim'
+    'p00f/clangd_extensions.nvim',
   },
-  { "diegoulloao/neofusion.nvim", priority = 1000, config = true, opts = ... },
+  { 'diegoulloao/neofusion.nvim', priority = 1000, config = true, opts = ... },
   {
-    "scottmckendry/cyberdream.nvim",
+    'scottmckendry/cyberdream.nvim',
     lazy = false,
     priority = 1000,
   },
   {
-    "tris203/precognition.nvim",
-    branch = "inlay_hints",
+    'tris203/precognition.nvim',
+    branch = 'inlay_hints',
   },
   {
     'rmagatti/auto-session',
   },
   {
-    "danymat/neogen",
+    'danymat/neogen',
     config = true,
   },
   {
-    "ggandor/leap.nvim",
+    'ggandor/leap.nvim',
   },
   {
-    "sourcegraph/sg.nvim",
-    dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope.nvim" },
-    run = 'nvim -l build/init.lua'
+    'sourcegraph/sg.nvim',
+    dependencies = { 'nvim-lua/plenary.nvim', 'nvim-telescope/telescope.nvim' },
+    run = 'nvim -l build/init.lua',
   },
   {
     'MeanderingProgrammer/markdown.nvim',
-    main = "render-markdown",
+    main = 'render-markdown',
     opts = {},
-    name = 'render-markdown',                                                      -- Only needed if you have another plugin named markdown.nvim
+    name = 'render-markdown', -- Only needed if you have another plugin named markdown.nvim
     dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.nvim' }, -- if you use the mini.nvim suite
     -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.icons' }, -- if you use standalone mini plugins
     -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
@@ -320,7 +321,12 @@ return {
     opts = {},
   },
   {
-    'sindrets/diffview.nvim'
-  }
-
+    'sindrets/diffview.nvim',
+  },
+  {
+    '3rd/image.nvim',
+    config = function()
+      -- ...
+    end,
+  },
 }

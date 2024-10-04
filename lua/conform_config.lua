@@ -6,5 +6,6 @@ require("conform").setup({
     -- You can customize some of the format options for the filetype (:help conform.format)
     rust = { "rustfmt", lsp_format = "fallback" },
     cpp = {"clang-format"},
+    --c = {"clang-format"},
   },
 })

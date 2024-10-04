@@ -36,8 +36,7 @@ I hope you enjoy your Neovim journey,
 
 P.S. You can delete this when you're done too. It's your config now :)
 --]]
-
--- Set <space> as the leader key
+--Set <space> as the leader key
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
 vim.g.mapleader = ' '
@@ -65,6 +64,9 @@ vim.opt.rtp:prepend(lazypath)
 --
 --  You can also configure plugins after the setup call,
 --    as they will be available in your neovim runtime.
+package.path = package.path .. ";" .. vim.fn.expand("$HOME") .. "/.luarocks/share/lua/6.1/?/init.lua"
+package.path = package.path .. ";" .. vim.fn.expand("$HOME") .. "/.luarocks/share/lua/5.1/?.lua"
+-- package.path = package.path .. ";" .. "/home/jtraversier/.luarocks/share/lua/5.1/magick"
 require('lazy').setup({
   -- NOTE: First, some plugins that don't require any configuration
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
@@ -84,32 +86,32 @@ require('lazy').setup({
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
-require("telescope_config")
-require("treesitter_config")
-require "cmp_config"
-require("lsp_config")
-require("which-key")
-require "option"
-require "keybind"
-require "toggleterm_config"
-require "surround_config"
-require "colorscheme_config"
-require "startup_nvim_config"
-require "lazygit_config"
-require "status_line_config"
-require "barbecue_config"
-require "neoscroll_config"
-require "cursorline_config"
-require "noice_config"
-require "bufferline_config"
-require "mini_config"
-require "trouble_config"
+require 'telescope_config'
+require 'treesitter_config'
+require 'cmp_config'
+require 'lsp_config'
+require 'which-key'
+require 'option'
+require 'keybind'
+require 'toggleterm_config'
+require 'surround_config'
+require 'colorscheme_config'
+require 'startup_nvim_config'
+require 'lazygit_config'
+require 'status_line_config'
+require 'barbecue_config'
+require 'neoscroll_config'
+require 'cursorline_config'
+require 'noice_config'
+require 'bufferline_config'
+require 'mini_config'
+require 'trouble_config'
 -- require "precognition_config"
-require("autosession_config")
-require("neogen_config")
-require("leap_config")
-require("sourcegraph_config")
-require("conform_config")
--- require ("language.python.lsp_python_config")
+require 'autosession_config'
+require 'neogen_config'
+require 'leap_config'
+require 'sourcegraph_config'
+require 'conform_config'
+require ("language.python.lsp_python_config")
 --require "codeium_config"
 --require 'after.ftplugin.rust'
