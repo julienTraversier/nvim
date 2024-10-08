@@ -95,10 +95,31 @@ return {
             return client.supports_method "textDocument/semanticTokens/full" and vim.lsp.semantic_tokens ~= nil
           end,
         },
-        ["<leader>ca"] = {
-          function() vim.cmd(":Lspsaga code_action<CR>") end,
-          desc = "code action"
-        }
+        ["<Leader>ca"] = {
+          ":Lspsaga code_action<CR>",
+          desc = "code action",
+          noremap = true,
+        },
+        ["<Leader>ch"] = {
+          ":Lspsaga incoming_calls<CR>",
+          desc = "incoming calls",
+          noremap = true,
+        },
+        ["<Leader>fu"] = {
+          ":Lspsaga finder<CR>",
+          desc = "find usage",
+          noremap = true,
+        },
+        ["<Leader>pd"] = {
+          ":Lspsaga peek_definition<CR>",
+          desc = "peek definition",
+          noremap = true,
+        },
+        ["<Leader>oo"] = {
+          ":Lspsaga outline<CR>",
+          desc = "open outline",
+          noremap = true,
+        },
       },
     },
     -- A custom `on_attach` function to be run after the default `on_attach` function

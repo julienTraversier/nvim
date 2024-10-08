@@ -48,6 +48,16 @@ return {
         -- navigate buffer tabs
         ["<A-right>"] = { function() require("astrocore.buffer").nav(vim.v.count1) end, desc = "Next buffer" },
         ["<A-left>"] = { function() require("astrocore.buffer").nav(-vim.v.count1) end, desc = "Previous buffer" },
+        ["<Leader>cc"] = {
+          function() require("astrocore.buffer").close_all(true, false) end,
+          desc = "close all buffer",
+        },
+        ["<Leader>C"] = {
+          function() require("astrocore.buffer").close() end,
+          desc = "close current buffer",
+        },
+
+        ["<Leader>c"] = false,
 
         -- mappings seen under group name "Buffer"
         ["<Leader>bd"] = {
@@ -66,7 +76,6 @@ return {
         -- this is useful for naming menus
         -- ["<Leader>b"] = { desc = "Buffers" },
         -- setting a mapping to false will disable it
-        ["<leader>c"] = false,
       },
     },
   },
