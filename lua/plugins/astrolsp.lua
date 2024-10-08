@@ -120,6 +120,14 @@ return {
           desc = "open outline",
           noremap = true,
         },
+        ["gd"] = {
+          function() require("telescope.builtin").lsp_definitions() end,
+          desc = "Goto Definition",
+        },
+        ["gr"] = {
+          function() require("telescope.builtin").lsp_references(buffer) end,
+          desc = "Goto Definition",
+        },
       },
     },
     -- A custom `on_attach` function to be run after the default `on_attach` function
