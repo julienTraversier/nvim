@@ -58,6 +58,7 @@ return {
         },
 
         ["<Leader>c"] = false,
+        ["gr"] = false,
 
         -- mappings seen under group name "Buffer"
         ["<Leader>bd"] = {

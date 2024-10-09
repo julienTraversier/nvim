@@ -83,11 +83,11 @@ return {
     mappings = {
       n = {
         -- a `cond` key can provided as the string of a server capability to be required to attach, or a function with `client` and `bufnr` parameters from the `on_attach` that returns a boolean
-        gD = {
-          function() vim.lsp.buf.declaration() end,
-          desc = "Declaration of current symbol",
-          cond = "textDocument/declaration",
-        },
+        -- gD = {
+        --   function() vim.lsp.buf.declaration() end,
+        --   desc = "Declaration of current symbol",
+        --   cond = "textDocument/declaration",
+        -- },
         ["<Leader>uY"] = {
           function() require("astrolsp.toggles").buffer_semantic_tokens() end,
           desc = "Toggle LSP semantic highlight (buffer)",
@@ -124,9 +124,13 @@ return {
           function() require("telescope.builtin").lsp_definitions() end,
           desc = "Goto Definition",
         },
+        ["grr"] = false,
+        ["gra"] = false,
+        ["grn"] = false,
         ["gr"] = {
-          function() require("telescope.builtin").lsp_references(buffer) end,
+          function() require("telescope.builtin").lsp_references() end,
           desc = "Goto Definition",
+          noremap = true,
         },
       },
     },
