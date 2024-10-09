@@ -5,7 +5,8 @@ local luasnip = require 'luasnip'
 require('luasnip.loaders.from_vscode').lazy_load()
 luasnip.config.setup {}
 
-vim.api.nvim_set_hl(0, "CmpItemKindCody", { fg = "Red" })
+vim.api.nvim_set_hl(0, 'CmpItemKindCody', { fg = 'Red' })
+vim.api.nvim_set_hl(0, 'CmpItemKindSupermaven', { fg = '#6CC644' })
 cmp.setup {
   snippet = {
     expand = function(args)
@@ -17,30 +18,30 @@ cmp.setup {
     documentation = cmp.config.window.bordered(),
   },
   completion = {
-    completeopt = 'menu,menuone,noinsert'
+    completeopt = 'menu,menuone,noinsert',
   },
   formatting = {
-    --format = function(entry, vim_item)
-    --  vim_item.abbr = string.sub(vim_item.abbr, 1, 20)
-    --  return vim_item
-    --end
-    --format = function(_, vim_item)
-    --  vim_item.menu = ""
-    --  vim_item.kind = ""
-    --  return vim_item
-    --end,
-    format = require('lspkind').cmp_format({
-      before = function(entry, vim_item)
-        --vim_item.abbr = string.sub(vim_item.abbr, 1, 50)
-        vim_item.menu = ""
-        --vim_item.kind = ""
-        return vim_item
-      end,
-      mode = "symbol",
-      maxwidth = 70,
-      ellipsis_char = '...',
-      symbol_map = { Codeium = "", cody="" },
-    })
+    --   --format = function(entry, vim_item)
+    --   --  vim_item.abbr = string.sub(vim_item.abbr, 1, 20)
+    --   --  return vim_item
+    --   --end
+    --   --format = function(_, vim_item)
+    --   --  vim_item.menu = ""
+    --   --  vim_item.kind = ""
+    --   --  return vim_item
+    --   --end,
+    format = require('lspkind').cmp_format {
+      --     -- before = function(entry, vim_item)
+      --     --   --vim_item.abbr = string.sub(vim_item.abbr, 1, 50)
+      --     --   vim_item.menu = ""
+      --     --   --vim_item.kind = ""
+      --     --   return vim_item
+      --     -- end,
+      --     -- mode = "symbol",
+      --     -- maxwidth = 70,
+      --     -- ellipsis_char = '...',
+      symbol_map = { Supermaven = '' },
+    },
   },
   mapping = cmp.mapping.preset.insert {
     ['<C-j>'] = cmp.mapping.select_next_item(),
@@ -82,15 +83,17 @@ cmp.setup {
       cmp.config.compare.sort_text,
       cmp.config.compare.length,
       cmp.config.compare.order,
-      require("cmp-under-comparator").under,
+      require('cmp-under-comparator').under,
     },
   },
   sources = {
-    {name ="cody", priority=10},
-    { name = 'nvim_lsp', priority=8 },
-    { name = 'luasnip', priority=7 },
-    { name = 'codeium' },
+    -- {name ="cody", priority=10},
+    { name = 'supermaven', priority = 10 },
+    { name = 'nvim_lsp', priority = 8 },
+    { name = 'luasnip', priority = 7 },
+    -- { name = 'codeium' },
     { name = 'buffer', priority = 1 },
-    { name = 'path' }
+    { name = 'path' },
   },
 }
+

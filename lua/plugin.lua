@@ -167,7 +167,7 @@ return {
     tag = '*',
     config = true,
   },
-  'ms-jpq/chadtree',
+  'nvim-tree/nvim-tree.lua',
   {
     {
       'kdheepak/lazygit.nvim',
@@ -328,5 +328,8 @@ return {
     config = function()
       -- ...
     end,
-  },
+  }, 
+  {
+      "supermaven-inc/supermaven-nvim",
+  }
 }
