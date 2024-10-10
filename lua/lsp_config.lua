@@ -53,6 +53,8 @@ end
 
 -- mason-lspconfig requires that these setup functions are called in this order
 -- before setting up the servers.
+dofile(vim.g.base46_cache .. "lsp")
+require("nvchad.lsp").diagnostic_config()
 require('mason').setup()
 require('mason-lspconfig').setup()
 vim.lsp.codelens.refresh()
@@ -95,6 +97,24 @@ require('neodev').setup()
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
+
+capabilities.textDocument.completion.completionItem = {
+  documentationFormat = { "markdown", "plaintext" },
+  snippetSupport = true,
+  preselectSupport = true,
+  insertReplaceSupport = true,
+  labelDetailsSupport = true,
+  deprecatedSupport = true,
+  commitCharactersSupport = true,
+  tagSupport = { valueSet = { 1 } },
+  resolveSupport = {
+    properties = {
+      "documentation",
+      "detail",
+      "additionalTextEdits",
+    },
+  },
+}
 -- Ensure the servers above are installed
 local mason_lspconfig = require 'mason-lspconfig'
 

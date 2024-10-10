@@ -2,10 +2,10 @@
 require("neofusion").setup()
 require("everforest").setup({})
 require("cyberdream").setup({
-    transparent = true,
+    transparent = false,
 })
 vim.o.background = "dark"
-vim.cmd([[ colorscheme cyberdream ]])
+vim.cmd([[ colorscheme catppuccin-mocha ]])
 
 require("catppuccin").setup({
     integrations = {

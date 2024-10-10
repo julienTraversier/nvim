@@ -2,47 +2,46 @@
 -- See `:help cmp`
 local cmp = require 'cmp'
 local luasnip = require 'luasnip'
-require('luasnip.loaders.from_vscode').lazy_load()
-luasnip.config.setup {}
+-- require('luasnip.loaders.from_vscode').lazy_load()
 
 vim.api.nvim_set_hl(0, 'CmpItemKindCody', { fg = 'Red' })
 vim.api.nvim_set_hl(0, 'CmpItemKindSupermaven', { fg = '#6CC644' })
-cmp.setup {
+local options = {
   snippet = {
     expand = function(args)
       luasnip.lsp_expand(args.body)
     end,
   },
-  window = {
-    completion = cmp.config.window.bordered(),
-    documentation = cmp.config.window.bordered(),
-  },
-  completion = {
-    completeopt = 'menu,menuone,noinsert',
-  },
-  formatting = {
-    --   --format = function(entry, vim_item)
-    --   --  vim_item.abbr = string.sub(vim_item.abbr, 1, 20)
-    --   --  return vim_item
-    --   --end
-    --   --format = function(_, vim_item)
-    --   --  vim_item.menu = ""
-    --   --  vim_item.kind = ""
-    --   --  return vim_item
-    --   --end,
-    format = require('lspkind').cmp_format {
-      --     -- before = function(entry, vim_item)
-      --     --   --vim_item.abbr = string.sub(vim_item.abbr, 1, 50)
-      --     --   vim_item.menu = ""
-      --     --   --vim_item.kind = ""
-      --     --   return vim_item
-      --     -- end,
-      --     -- mode = "symbol",
-      --     -- maxwidth = 70,
-      --     -- ellipsis_char = '...',
-      symbol_map = { Supermaven = '' },
-    },
-  },
+  -- window = {
+  --   completion = cmp.config.window.bordered(),
+  --   documentation = cmp.config.window.bordered(),
+  -- },
+  -- completion = {
+  --   completeopt = 'menu,menuone,noinsert',
+  -- },
+  -- formatting = {
+  --   --   --format = function(entry, vim_item)
+  --   --   --  vim_item.abbr = string.sub(vim_item.abbr, 1, 20)
+  --   --   --  return vim_item
+  --   --   --end
+  --   --   --format = function(_, vim_item)
+  --   --   --  vim_item.menu = ""
+  --   --   --  vim_item.kind = ""
+  --   --   --  return vim_item
+  --   --   --end,
+  --   format = require('lspkind').cmp_format {
+  --     --     -- before = function(entry, vim_item)
+  --     --     --   --vim_item.abbr = string.sub(vim_item.abbr, 1, 50)
+  --     --     --   vim_item.menu = ""
+  --     --     --   --vim_item.kind = ""
+  --     --     --   return vim_item
+  --     --     -- end,
+  --     --     -- mode = "symbol",
+  --     --     -- maxwidth = 70,
+  --     --     -- ellipsis_char = '...',
+  --     symbol_map = { Supermaven = '' },
+  --   },
+  -- },
   mapping = cmp.mapping.preset.insert {
     ['<C-j>'] = cmp.mapping.select_next_item(),
     ['<C-k>'] = cmp.mapping.select_prev_item(),
@@ -72,20 +71,20 @@ cmp.setup {
       end
     end, { 'i', 's' }),
   },
-  sorting = {
-    priority_weight = 1.0,
-    comparators = {
-      cmp.config.compare.offset,
-      cmp.config.compare.exact,
-      cmp.config.compare.recently_used,
-      cmp.config.compare.score,
-      cmp.config.compare.kind,
-      cmp.config.compare.sort_text,
-      cmp.config.compare.length,
-      cmp.config.compare.order,
-      require('cmp-under-comparator').under,
-    },
-  },
+  -- sorting = {
+  --   priority_weight = 1.0,
+  --   comparators = {
+  --     cmp.config.compare.offset,
+  --     cmp.config.compare.exact,
+  --     cmp.config.compare.recently_used,
+  --     cmp.config.compare.score,
+  --     cmp.config.compare.kind,
+  --     cmp.config.compare.sort_text,
+  --     cmp.config.compare.length,
+  --     cmp.config.compare.order,
+  --     require('cmp-under-comparator').under,
+  --   },
+  -- },
   sources = {
     -- {name ="cody", priority=10},
     { name = 'supermaven', priority = 10 },
@@ -96,4 +95,5 @@ cmp.setup {
     { name = 'path' },
   },
 }
-
+options = vim.tbl_deep_extend("force", options, require "nvchad.cmp")
+require("cmp").setup(options)

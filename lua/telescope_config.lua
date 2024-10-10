@@ -8,35 +8,35 @@ if not status then
 end
 
 require('telescope').setup {
-  defaults = {
-    layout_strategy = 'flex',
-    layout_config ={
-      horizontal = {
-        width = 0.8,
-        height = 0.8,
-        preview_width = 0.6,
-      },
-      vertical = {
-        width = 0.8,
-        height = 0.8,
-        preview_height = 0.6,
-        preview_cutoff = 120
-      }
-    },
-    path_display={"tail"},
-    wrap_results = true,
-    mappings = {
-      i = {
-        ['<C-u>'] = false,
-        ['<C-d>'] = false,
-      },
-    },
-  },
-  pickers = {
-    find_files = {
-      hidden = true
-    },
-  }
+  -- defaults = {
+  --   layout_strategy = 'flex',
+  --   layout_config ={
+  --     horizontal = {
+  --       width = 0.8,
+  --       height = 0.8,
+  --       preview_width = 0.6,
+  --     },
+  --     vertical = {
+  --       width = 0.8,
+  --       height = 0.8,
+  --       preview_height = 0.6,
+  --       preview_cutoff = 120
+  --     }
+  --   },
+  --   path_display={"tail"},
+  --   wrap_results = true,
+  --   mappings = {
+  --     i = {
+  --       ['<C-u>'] = false,
+  --       ['<C-d>'] = false,
+  --     },
+  --   },
+  -- },
+  -- pickers = {
+  --   find_files = {
+  --     hidden = true
+  --   },
+  -- }
 }
 
 -- Enable telescope fzf native, if installed
@@ -96,3 +96,7 @@ vim.keymap.set('n', '<leader>sG', require('telescope').extensions.live_grep_args
 vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
 vim.keymap.set('n', '<leader>sr', require('telescope.builtin').resume, { desc = '[S]earch [R]esume' })
 vim.keymap.set('n', '<leader>ff', require('telescope.builtin').current_buffer_fuzzy_find, { desc = 'Search in File' })
+vim.keymap.set('n', '<leader>ft', function()
+ require("nvchad.themes").open { style = "flat" }
+end, { desc = 'Search in File' }  )
+

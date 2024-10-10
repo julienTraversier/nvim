@@ -217,21 +217,21 @@ return {
     end,
     event = 'VeryLazy', -- Optional: needed only if you want to type `:VenvSelect` without a keymapping
   },
-  {
-    'folke/noice.nvim',
-    event = 'VeryLazy',
-    opts = {
-      -- add any options here
-    },
-    dependencies = {
-      -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-      'MunifTanjim/nui.nvim',
-      -- OPTIONAL:
-      --   `nvim-notify` is only needed, if you want to use the notification view.
-      --   If not available, we use `mini` as the fallback
-      'rcarriga/nvim-notify',
-    },
-  },
+  -- {
+  --   'folke/noice.nvim',
+  --   event = 'VeryLazy',
+  --   opts = {
+  --     -- add any options here
+  --   },
+  --   dependencies = {
+  --     -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+  --     'MunifTanjim/nui.nvim',
+  --     -- OPTIONAL:
+  --     --   `nvim-notify` is only needed, if you want to use the notification view.
+  --     --   If not available, we use `mini` as the fallback
+  --     'rcarriga/nvim-notify',
+  --   },
+  -- },
   {
     'mrcjkb/rustaceanvim',
     version = '^4', -- Recommended
@@ -328,8 +328,22 @@ return {
     config = function()
       -- ...
     end,
-  }, 
+  },
   {
-      "supermaven-inc/supermaven-nvim",
-  }
+    'supermaven-inc/supermaven-nvim',
+  },
+  {
+    'nvchad/ui',
+    config = function()
+      require 'nvchad'
+    end,
+  },
+  { "nvchad/volt" },
+  {
+    'nvchad/base46',
+    lazy = true,
+    build = function()
+      require('base46').load_all_highlights()
+    end,
+  },
 }
