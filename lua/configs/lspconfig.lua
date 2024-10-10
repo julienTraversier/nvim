@@ -28,29 +28,52 @@ local on_attach = function(_, bufnr)
   nmap("<C-k>", vim.lsp.buf.signature_help, "Signature Documentation")
 end
 
-local lspconfig = require "lspconfig"
+require("mason").setup()
+require("mason-lspconfig").setup()
+local mason_lspconfig = require "mason-lspconfig"
+
+local servers = {
+  clangd = {},
+  pyright = {},
+  lua_ls = {
+    Lua = {
+      workspace = { checkThirdParty = false },
+      telemetry = { enable = false },
+      hint = {
+        enable = true,
+        arrayIndex = "Disable",
+      },
+    },
+  },
+}
+vim.lsp.codelens.refresh()
+vim.lsp.inlay_hint.enable(true)
+
+mason_lspconfig.setup {
+  ensure_installed = vim.tbl_keys(servers),
+}
 
 -- EXAMPLE
-local servers = { "clangd", "pyright", "lua_ls" }
 local nvlsp = require "nvchad.configs.lspconfig"
 -- lsps with default config
 local capabilities = nvlsp.capabilities
 capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
-for _, lsp in ipairs(servers) do
-  lspconfig[lsp].setup {
-    on_attach = on_attach,
-    on_init = nvlsp.on_init,
-    capabilities = capabilities,
-    inlay_hints = { enable = true },
-    codelens = { enable = true },
-  }
-end
--- configuring single server, example: typescript
--- lspconfig.ts_ls.setup {
---   on_attach = nvlsp.on_attach,
---   on_init = nvlsp.on_init,
---   capabilities = nvlsp.capabilities,
--- }
+
+mason_lspconfig.setup_handlers {
+  ["rust_analyzer"] = function() end,
+  function(server_name)
+    require("lspconfig")[server_name].setup {
+      capabilities = capabilities,
+      on_attach = on_attach,
+      on_init = nvlsp.on_init,
+      settings = servers[server_name],
+      filetypes = (servers[server_name] or {}).filetypes,
+      cmd = (servers[server_name] or {}).cmd,
+      inlay_hints = { enable = true },
+      codelens = { enable = true },
+    }
+  end,
+}
 
 require("lspsaga").setup {
   finder = {
