@@ -1,13 +1,13 @@
 local options = {
 
   base46 = {
-    theme = "everforest", -- default theme
+    theme = "chadracula", -- default theme
     hl_add = {},
     hl_override = {},
-    integrations = {},
+    integrations = {"dap","lspsaga","todo"},
     changed_themes = {},
     transparency = false,
-    theme_toggle = { "everforest", "one_light" },
+    theme_toggle = { "chadracula", "one_light" },
   },
 
   ui = {
@@ -32,7 +32,7 @@ local options = {
       order = { "mode", "file", "git", "%=", "lsp_msg", "%=", "diagnostics", "clock","lsp", "cwd", "cursor" },
       modules = {
         clock = function()
-          return  "  "..os.date("%H:%M")
+          return  "  "..os.date("%H:%M ")
         end,
       },
     },
@@ -48,6 +48,7 @@ local options = {
 
   nvdash = {
   },
+  lsp = { signature = true },
 
   mason = { pkgs = {} },
 
