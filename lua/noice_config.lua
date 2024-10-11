@@ -7,10 +7,9 @@ require("noice").setup({
       ["cmp.entry.get_documentation"] = true,
     },
     signature = {
-      auto_open = {
-        enabled = false
-      }
+      enabled = false
     }
+
   },
   -- you can enable a preset for easier configuration
   presets = {
@@ -20,4 +19,8 @@ require("noice").setup({
     inc_rename = false, -- enables an input dialog for inc-rename.nvim
     lsp_doc_border = false, -- add a border to hover docs and signature help
   },
+})
+
+require("notify").setup({
+  background_colour = "#000000",
 })

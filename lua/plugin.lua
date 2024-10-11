@@ -2,10 +2,8 @@ return {
   -- Git related plugins
   'tpope/vim-fugitive',
   'tpope/vim-rhubarb',
-
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
-
   -- NOTE: This is where your plugins related to LSP can be installed.
   --  The configuration is done below. Search for lspconfig to find it below.
   {
@@ -63,6 +61,7 @@ return {
       signs = {
         add = { text = '+' },
         change = { text = '~' },
+
         delete = { text = '_' },
         topdelete = { text = '‾' },
         changedelete = { text = '~' },
@@ -183,18 +182,18 @@ return {
   'tpope/vim-fugitive',
   'rhysd/git-messenger.vim',
   'jiangmiao/auto-pairs',
-  {
-    'utilyre/barbecue.nvim',
-    name = 'barbecue',
-    version = '*',
-    dependencies = {
-      'SmiteshP/nvim-navic',
-      'nvim-tree/nvim-web-devicons', -- optional dependency
-    },
-    opts = {
-      -- configurations go here
-    },
-  },
+  -- {
+  --   'utilyre/barbecue.nvim',
+  --   name = 'barbecue',
+  --   version = '*',
+  --   dependencies = {
+  --     'SmiteshP/nvim-navic',
+  --     'nvim-tree/nvim-web-devicons', -- optional dependency
+  --   },
+  --   opts = {
+  --     -- configurations go here
+  --   },
+  -- },
   { 'karb94/neoscroll.nvim' },
   'mfussenegger/nvim-lint',
   {
@@ -202,7 +201,7 @@ return {
     version = '*', -- Use for stability; omit to use `main` branch for the latest features
     event = 'VeryLazy',
   },
-  { 'akinsho/bufferline.nvim', version = '*', dependencies = 'nvim-tree/nvim-web-devicons' },
+  -- { 'akinsho/bufferline.nvim', version = '*', dependencies = 'nvim-tree/nvim-web-devicons' },
   { 'yamatsum/nvim-cursorline' },
   {
     'linux-cultist/venv-selector.nvim',
@@ -217,21 +216,21 @@ return {
     end,
     event = 'VeryLazy', -- Optional: needed only if you want to type `:VenvSelect` without a keymapping
   },
-  -- {
-  --   'folke/noice.nvim',
-  --   event = 'VeryLazy',
-  --   opts = {
-  --     -- add any options here
-  --   },
-  --   dependencies = {
-  --     -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-  --     'MunifTanjim/nui.nvim',
-  --     -- OPTIONAL:
-  --     --   `nvim-notify` is only needed, if you want to use the notification view.
-  --     --   If not available, we use `mini` as the fallback
-  --     'rcarriga/nvim-notify',
-  --   },
-  -- },
+  {
+    'folke/noice.nvim',
+    event = 'VeryLazy',
+    opts = {
+      -- add any options here
+    },
+    dependencies = {
+      -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+      'MunifTanjim/nui.nvim',
+      -- OPTIONAL:
+      --   `nvim-notify` is only needed, if you want to use the notification view.
+      --   If not available, we use `mini` as the fallback
+      'rcarriga/nvim-notify',
+    },
+  },
   {
     'mrcjkb/rustaceanvim',
     version = '^4', -- Recommended
@@ -245,7 +244,6 @@ return {
     'nvim-pack/nvim-spectre',
   },
   { 'echasnovski/mini.align', version = '*' },
-  { 'tamton-aquib/duck.nvim' },
   { 'lvimuser/lsp-inlayhints.nvim' },
   {
     'Badhi/nvim-treesitter-cpp-tools',
