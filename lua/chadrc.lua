@@ -1,13 +1,13 @@
 local options = {
 
   base46 = {
-    theme = "bearded-arc", -- default theme
+    theme = "chadracula", -- default theme
     hl_add = {},
     hl_override = {},
     integrations = {"dap","lspsaga","todo"},
     changed_themes = {},
-    transparency = true,
-    theme_toggle = { "bearded-arc", "one_light" },
+    transparency = false,
+    theme_toggle = { "chadracula", "one_light" },
   },
 
   ui = {
