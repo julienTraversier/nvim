@@ -87,13 +87,20 @@ local options = {
   -- },
   sources = {
     -- {name ="cody", priority=10},
-    { name = 'supermaven', priority = 10 },
-    { name = 'nvim_lsp', priority = 8 },
-    { name = 'luasnip', priority = 7 },
+    -- { name = 'supermaven', priority = 9 },
+    -- { name = 'nvim_lsp', priority = 10 },
+    -- { name = 'luasnip', priority = 7 },
+    -- -- { name = 'codeium' },
+    -- { name = 'buffer', priority = 8 },
+    -- { name = 'path' },
+
+    { name = 'supermaven' },
+    { name = 'nvim_lsp' },
+    { name = 'luasnip' },
     -- { name = 'codeium' },
-    { name = 'buffer', priority = 1 },
+    { name = 'buffer' },
     { name = 'path' },
   },
 }
-options = vim.tbl_deep_extend("force", options, require "nvchad.cmp")
-require("cmp").setup(options)
+options = vim.tbl_deep_extend('force', options, require 'nvchad.cmp')
+require('cmp').setup(options)

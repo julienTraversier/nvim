@@ -8,7 +8,9 @@ if not status then
 end
 
 require('telescope').setup {
-  -- defaults = {
+  defaults = {
+    path_display={"smart"}
+  }
   --   layout_strategy = 'flex',
   --   layout_config ={
   --     horizontal = {

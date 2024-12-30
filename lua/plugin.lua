@@ -336,12 +336,22 @@ return {
       require 'nvchad'
     end,
   },
-  { "nvchad/volt" },
+  { 'nvchad/volt' },
   {
     'nvchad/base46',
     lazy = true,
     build = function()
       require('base46').load_all_highlights()
     end,
+  },
+  {
+    'nvim-neotest/neotest',
+    dependencies = {
+      'nvim-neotest/nvim-nio',
+      'nvim-lua/plenary.nvim',
+      'alfaix/neotest-gtest',
+      'antoinemadec/FixCursorHold.nvim',
+      'nvim-treesitter/nvim-treesitter',
+    },
   },
 }

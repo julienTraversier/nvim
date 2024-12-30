@@ -104,3 +104,17 @@ end, opts)
 vim.keymap.set('n', '<A-c>', function()
   require('nvchad.tabufline').close_buffer()
 end, opts)
+
+
+
+vim.api.nvim_set_keymap('n', '<leader>tr', "<cmd>lua require('neotest').run.run()<CR>", opts)
+vim.api.nvim_set_keymap('n', '<leader>tf', "<cmd>lua require('neotest').run.run(vim.fn.expand('%'))<CR>", opts)
+vim.api.nvim_set_keymap('n', '<leader>ts', "<cmd>Neotest summary<CR>", opts)
+vim.api.nvim_set_keymap('n', '<leader>to', "<cmd>Neotest output-panel<CR>", opts)
+
+-- vim.api.nvim_set_keymap('n', '<leader>tf', function()
+--   require("neotest").run.run(vim.fn.expand("%"))
+-- end, opts)
+--
+-- vim.api.nvim_set_keymap('n', '<leader>ts', ":Neotest summary<CR>", opts)
+-- vim.api.nvim_set_keymap('n', '<leader>to', ":Neotest output-panel<CR>", opts)
