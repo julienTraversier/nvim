@@ -4,19 +4,19 @@ local options = {
     theme = "bearded-arc", -- default theme
     hl_add = {},
     hl_override = {},
-    integrations = {"dap","lspsaga","todo"},
+    integrations = { "dap", "lspsaga", "todo" },
     changed_themes = {},
-    transparency = true,
+    transparency = false,
     theme_toggle = { "bearded-arc", "one_light" },
   },
 
   ui = {
     cmp = {
-      icons_left = false, -- only for non-atom styles!
+      icons_left = false,     -- only for non-atom styles!
       lspkind_text = true,
       style = "atom_colored", -- default/flat_light/flat_dark/atom/atom_colored
       format_colors = {
-        tailwind = false, -- will work for css lsp too
+        tailwind = false,     -- will work for css lsp too
         icon = "󱓻",
       },
     },
@@ -29,10 +29,10 @@ local options = {
       -- default/round/block/arrow separators work only for default statusline theme
       -- round and block will work for minimal theme only
       separator_style = "default",
-      order = { "mode", "file", "git", "%=", "lsp_msg", "%=", "diagnostics", "clock","lsp", "cwd", "cursor" },
+      order = { "mode", "file", "git", "%=", "lsp_msg", "%=", "diagnostics", "clock", "lsp", "cwd", "cursor" },
       modules = {
         clock = function()
-          return  "  "..os.date("%H:%M ")
+          return "  " .. os.date("%H:%M ")
         end,
       },
     },
@@ -48,7 +48,7 @@ local options = {
 
   nvdash = {
   },
-  lsp = { signature = true },
+  -- lsp = { signature = true },
 
   mason = { pkgs = {} },
 
