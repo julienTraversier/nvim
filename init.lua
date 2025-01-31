@@ -117,6 +117,7 @@ require ("language.python.lsp_python_config")
 require("ia_config")
 require 'chadrc'
 require 'config_test'
+require 'snacks_config'
 
  for _, v in ipairs(vim.fn.readdir(vim.g.base46_cache)) do
    dofile(vim.g.base46_cache .. v)

@@ -354,4 +354,7 @@ return {
       'nvim-treesitter/nvim-treesitter',
     },
   },
+  {
+    'folke/snacks.nvim',
+  },
 }
