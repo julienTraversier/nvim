@@ -163,7 +163,7 @@ return {
   },
   {
     'akinsho/toggleterm.nvim',
-    tag = '*',
+    version = '*',
     config = true,
   },
   'nvim-tree/nvim-tree.lua',
@@ -301,18 +301,11 @@ return {
     'ggandor/leap.nvim',
   },
   {
-    'sourcegraph/sg.nvim',
-    dependencies = { 'nvim-lua/plenary.nvim', 'nvim-telescope/telescope.nvim' },
-    run = 'nvim -l build/init.lua',
-  },
-  {
     'MeanderingProgrammer/markdown.nvim',
     main = 'render-markdown',
-    opts = {},
     name = 'render-markdown', -- Only needed if you have another plugin named markdown.nvim
-    dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.nvim' }, -- if you use the mini.nvim suite
-    -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.icons' }, -- if you use standalone mini plugins
-    -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
+    dependencies = { 'nvim-treesitter/nvim-treesitter' }, -- if you use the mini.nvim suite
+    ft = { 'markdown', 'Avante' },
   },
   {
     'stevearc/conform.nvim',
@@ -326,9 +319,6 @@ return {
     config = function()
       -- ...
     end,
-  },
-  {
-    'supermaven-inc/supermaven-nvim',
   },
   {
     'nvchad/ui',
@@ -356,5 +346,43 @@ return {
   },
   {
     'folke/snacks.nvim',
+  },
+  {
+    'yetone/avante.nvim',
+    event = 'VeryLazy',
+    lazy = false,
+    version = false, -- Set this to "*" to always pull the latest release version, or set it to false to update to the latest code changes.
+    -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
+    opts = {},
+    build = 'make',
+    -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
+    dependencies = {
+      'stevearc/dressing.nvim',
+      'nvim-lua/plenary.nvim',
+      'MunifTanjim/nui.nvim',
+      --- The below dependencies are optional,
+      'echasnovski/mini.pick', -- for file_selector provider mini.pick
+      'nvim-telescope/telescope.nvim', -- for file_selector provider telescope
+      'hrsh7th/nvim-cmp', -- autocompletion for avante commands and mentions
+      'ibhagwan/fzf-lua', -- for file_selector provider fzf
+      'nvim-tree/nvim-web-devicons', -- or echasnovski/mini.icons
+      {
+        -- support for image pasting
+        'HakonHarnes/img-clip.nvim',
+        event = 'VeryLazy',
+        opts = {
+          -- recommended settings
+          default = {
+            embed_image_as_base64 = false,
+            prompt_for_file_name = false,
+            drag_and_drop = {
+              insert_mode = true,
+            },
+            -- required for Windows users
+            use_absolute_path = true,
+          },
+        },
+      },
+    },
   },
 }

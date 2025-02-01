@@ -100,6 +100,7 @@ local options = {
     -- { name = 'codeium' },
     { name = 'buffer' },
     { name = 'path' },
+    { name = 'render-markdown' },
   },
 }
 options = vim.tbl_deep_extend('force', options, require 'nvchad.cmp')

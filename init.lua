@@ -64,9 +64,9 @@ vim.opt.rtp:prepend(lazypath)
 --
 --  You can also configure plugins after the setup call,
 --    as they will be available in your neovim runtime.
-package.path = package.path .. ";" .. vim.fn.expand("$HOME") .. "/.luarocks/share/lua/6.1/?/init.lua"
-package.path = package.path .. ";" .. vim.fn.expand("$HOME") .. "/.luarocks/share/lua/5.1/?.lua"
-vim.g.base46_cache = vim.fn.stdpath "data" .. "/base46_cache/"
+package.path = package.path .. ';' .. vim.fn.expand '$HOME' .. '/.luarocks/share/lua/6.1/?/init.lua'
+package.path = package.path .. ';' .. vim.fn.expand '$HOME' .. '/.luarocks/share/lua/5.1/?.lua'
+vim.g.base46_cache = vim.fn.stdpath 'data' .. '/base46_cache/'
 -- package.path = package.path .. ";" .. "/home/jtraversier/.luarocks/share/lua/5.1/magick"
 require('lazy').setup({
   -- NOTE: First, some plugins that don't require any configuration
@@ -97,29 +97,22 @@ require 'keybind'
 require 'toggleterm_config'
 require 'nvim_tree_config'
 require 'surround_config'
--- require 'colorscheme_config'
 require 'startup_nvim_config'
-require 'lazygit_config'
--- require 'status_line_config'
--- require 'barbecue_config'
--- require 'neoscroll_config'
 require 'cursorline_config'
 require 'noice_config'
--- require 'bufferline_config'
 require 'mini_config'
 require 'trouble_config'
 require 'autosession_config'
 require 'neogen_config'
 require 'leap_config'
-require 'sourcegraph_config'
 require 'conform_config'
-require ("language.python.lsp_python_config")
-require("ia_config")
+require 'language.python.lsp_python_config'
+require 'markdown_config'
+require 'ia_config'
 require 'chadrc'
 require 'config_test'
 require 'snacks_config'
 
- for _, v in ipairs(vim.fn.readdir(vim.g.base46_cache)) do
-   dofile(vim.g.base46_cache .. v)
- end
---require "codeium_config"
+for _, v in ipairs(vim.fn.readdir(vim.g.base46_cache)) do
+  dofile(vim.g.base46_cache .. v)
+end

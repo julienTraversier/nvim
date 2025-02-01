@@ -19,8 +19,8 @@ return {
     'jay-babu/mason-nvim-dap.nvim',
 
     -- Add your own debuggers here
-    "mfussenegger/nvim-dap-python",
-    "nvim-neotest/nvim-nio"
+    'mfussenegger/nvim-dap-python',
+    'nvim-neotest/nvim-nio',
   },
   config = function()
     local dap = require 'dap'
@@ -52,9 +52,11 @@ return {
     vim.keymap.set('n', '<leader>B', function()
       dap.set_breakpoint(vim.fn.input 'Breakpoint condition: ')
     end, { desc = 'Debug: Set Breakpoint' })
-    vim.keymap.set("n", "<leader>de", dapui.eval, { desc = "Debug: eval expression 2 time to step into it" })
-    vim.keymap.set("n", "<leader>df", dapui.float_element, { desc = "Debug: pop up floating element" })
-    vim.keymap.set("n", "<leader>dt", dapui.toggle, { desc = "Debug: pop up floating element" })
+    vim.keymap.set('n', '<leader>de', dapui.eval, { desc = 'Debug: eval expression 2 time to step into it' })
+    vim.keymap.set('n', '<leader>df', function()
+      dapui.float_element('stacks', { title = 'stacks', height = 40, enter = true })
+    end, { desc = 'Debug: pop up floating element' })
+    vim.keymap.set('n', '<leader>dt', dapui.toggle, { desc = 'Debug: pop up floating element' })
 
     -- Dap UI setup
     -- For more information, see |:help nvim-dap-ui|
@@ -76,6 +78,44 @@ return {
           disconnect = '⏏',
         },
       },
+      layouts = {
+        {
+          elements = {
+            {
+              id = 'scopes',
+              size = 0.55,
+            },
+            {
+              id = 'breakpoints',
+              size = 0.1,
+            },
+            {
+              id = 'stacks',
+              size = 0.20,
+            },
+            {
+              id = 'watches',
+              size = 0.15,
+            },
+          },
+          position = 'left',
+          size = 60,
+        },
+        {
+          elements = {
+            {
+              id = 'repl',
+              size = 0.2,
+            },
+            {
+              id = 'console',
+              size = 0.8,
+            },
+          },
+          position = 'bottom',
+          size = 10,
+        },
+      },
     }
 
     -- Toggle to see last session result. Without this, you can't see session output in case of unhandled exception.
@@ -85,80 +125,79 @@ return {
     dap.listeners.before.event_terminated['dapui_config'] = dapui.close
     dap.listeners.before.event_exited['dapui_config'] = dapui.close
 
-    require('dap-python').setup("~/.virtualenvs/debugpy/bin/python")
+    require('dap-python').setup '~/.virtualenvs/debugpy/bin/python'
     dap.configurations.python = {
       {
-        type = "python",
-        request = "launch",
-        name = "launch file",
-        cwd = "${workspaceFolder}",
-        program = "${file}"
-      }
+        type = 'python',
+        request = 'launch',
+        name = 'launch file',
+        cwd = '${workspaceFolder}',
+        program = '${file}',
+      },
     }
-
 
     dap.adapters.cppdbg = {
       id = 'cppdbg',
       type = 'executable',
       command = '/home/jtraversier/Téléchargements/extension/debugAdapters/bin/OpenDebugAD7',
     }
---    dap.adapters.gdb = {
---      type = "executable",
---      command = "gdb",
---      args = { "-i", "dap" }
---    }
---    dap.configurations.c = {
---  {
---    name = "Launch",
---    type = "gdb",
---    request = "launch",
---    program = function()
---      return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
---    end,
---    cwd = "${workspaceFolder}",
---    stopAtBeginningOfMainSubprogram = false,
---  },
---}
---    dap.configurations.cpp = {
---  {
---    name = "Launch",
---    type = "gdb",
---    request = "launch",
---    program = function()
---      return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
---    end,
---    cwd = "${workspaceFolder}",
---    stopAtBeginningOfMainSubprogram = false,
---  },
---}
+    --    dap.adapters.gdb = {
+    --      type = "executable",
+    --      command = "gdb",
+    --      args = { "-i", "dap" }
+    --    }
+    --    dap.configurations.c = {
+    --  {
+    --    name = "Launch",
+    --    type = "gdb",
+    --    request = "launch",
+    --    program = function()
+    --      return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+    --    end,
+    --    cwd = "${workspaceFolder}",
+    --    stopAtBeginningOfMainSubprogram = false,
+    --  },
+    --}
+    --    dap.configurations.cpp = {
+    --  {
+    --    name = "Launch",
+    --    type = "gdb",
+    --    request = "launch",
+    --    program = function()
+    --      return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+    --    end,
+    --    cwd = "${workspaceFolder}",
+    --    stopAtBeginningOfMainSubprogram = false,
+    --  },
+    --}
     dap.configurations.c = {
       {
-        name = "Launch file",
-        type = "cppdbg",
-        request = "launch",
+        name = 'Launch file',
+        type = 'cppdbg',
+        request = 'launch',
         program = function()
           return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
         end,
         --program = "${workspaceFolder}/../build_x86/fiber-optic/Fiber_Optic",
         cwd = '${workspaceFolder}',
         stopAtEntry = false,
-      }
+      },
     }
     dap.configurations.cpp = {
       {
-        name = "Launch file",
-        type = "cppdbg",
-        request = "launch",
+        name = 'Launch file',
+        type = 'cppdbg',
+        request = 'launch',
         program = function()
           return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
         end,
         --program = "${workspaceFolder}/../build_x86/fiber-optic/Fiber_Optic",
         cwd = '${workspaceFolder}',
         args = {
-           "--enable-pretty-printing",
+          '--enable-pretty-printing',
         },
         stopAtEntry = false,
-      }
+      },
     }
     --dap.configurations.rust = {
     --  {
@@ -171,6 +210,6 @@ return {
     --  stopOnEntry = false,
     --  args = {},
     --}
-  --}
-  end
+    --}
+  end,
 }
