@@ -8,9 +8,10 @@
 return {
   "AstroNvim/astrocommunity",
   { import = "astrocommunity.pack.lua" },
+  { import = "astrocommunity.recipes.cache-colorscheme" },
   { import = "astrocommunity.colorscheme.cyberdream-nvim" },
   { import = "astrocommunity.utility.noice-nvim" },
-  { import = "astrocommunity.completion.blink-cmp" },
+  { import = "astrocommunity.completion.blink-cmp", enabled = false },
   { import = "astrocommunity.lsp.lspsaga-nvim" },
   { import = "astrocommunity.editing-support.conform-nvim" },
   { import = "astrocommunity.media.image-nvim" },
@@ -19,8 +20,9 @@ return {
   { import = "astrocommunity.pack.cpp" },
   { import = "astrocommunity.pack.rust" },
   { import = "astrocommunity.pack.zig" },
-  { import = "astrocommunity.pack.nvchad-ui" },
+  { import = "astrocommunity.pack.nvchad-ui", enabled = true },
   { import = "astrocommunity.test.neotest" },
   { import = "astrocommunity.editing-support.neogen" },
+  { import = "astrocommunity.file-explorer.oil-nvim" },
   -- import/override with your plugins folder
 }
