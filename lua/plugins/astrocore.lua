@@ -77,6 +77,10 @@ return {
         -- this is useful for naming menus
         -- ["<Leader>b"] = { desc = "Buffers" },
         -- setting a mapping to false will disable it
+        ["ù"] = {
+          "%",
+          desc = ""
+        },
       },
     },
   },

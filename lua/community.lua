@@ -10,6 +10,14 @@ return {
   { import = "astrocommunity.pack.lua" },
   { import = "astrocommunity.colorscheme.cyberdream-nvim" },
   { import = "astrocommunity.utility.noice-nvim" },
+  { import = "astrocommunity.completion.blink-cmp"},
   { import = "astrocommunity.lsp.lspsaga-nvim" },
+  { import = "astrocommunity.editing-support.conform-nvim" },
+  { import = "astrocommunity.media.image-nvim" },
+  {import = "astrocommunity.markdown-and-latex.render-markdown-nvim"},
+  { import = "astrocommunity.completion.avante-nvim" },
+  { import = "astrocommunity.pack.cpp" },
+  { import = "astrocommunity.pack.rust" },
+  { import = "astrocommunity.pack.zig" },
   -- import/override with your plugins folder
 }

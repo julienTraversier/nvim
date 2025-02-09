@@ -95,31 +95,6 @@ return {
             return client.supports_method "textDocument/semanticTokens/full" and vim.lsp.semantic_tokens ~= nil
           end,
         },
-        ["<Leader>ca"] = {
-          ":Lspsaga code_action<CR>",
-          desc = "code action",
-          noremap = true,
-        },
-        ["<Leader>ch"] = {
-          ":Lspsaga incoming_calls<CR>",
-          desc = "incoming calls",
-          noremap = true,
-        },
-        ["<Leader>fu"] = {
-          ":Lspsaga finder<CR>",
-          desc = "find usage",
-          noremap = true,
-        },
-        ["<Leader>pd"] = {
-          ":Lspsaga peek_definition<CR>",
-          desc = "peek definition",
-          noremap = true,
-        },
-        ["<Leader>oo"] = {
-          ":Lspsaga outline<CR>",
-          desc = "open outline",
-          noremap = true,
-        },
         ["gd"] = {
           function() require("telescope.builtin").lsp_definitions() end,
           desc = "Goto Definition",
