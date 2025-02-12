@@ -38,6 +38,9 @@ return {
         "delve",
       },
     }
+    vim.keymap.set("n", "<F1>", dap.step_into, { desc = "Debug: Step Into" })
+    vim.keymap.set("n", "<F2>", dap.step_over, { desc = "Debug: Step Over" })
+    vim.keymap.set("n", "<F3>", dap.step_out, { desc = "Debug: Step Out" })
     vim.keymap.set("n", "<leader>de", dapui.eval, { desc = "Debug: eval expression 2 time to step into it" })
     vim.keymap.set(
       "n",
@@ -45,6 +48,9 @@ return {
       function() dapui.float_element("stacks", { title = "stacks", height = 40, enter = true }) end,
       { desc = "Debug: pop up floating element" }
     )
+    dap.listeners.after.event_initialized["dapui_config"] = dapui.open
+    dap.listeners.before.event_terminated["dapui_config"] = dapui.close
+    dap.listeners.before.event_exited["dapui_config"] = dapui.close
     require("dap-python").setup "~/.virtualenvs/debugpy/bin/python"
     dap.configurations.python = {
       {
