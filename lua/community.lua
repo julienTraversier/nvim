@@ -18,6 +18,7 @@ return {
   { import = "astrocommunity.markdown-and-latex.render-markdown-nvim" },
   { import = "astrocommunity.completion.avante-nvim" },
   { import = "astrocommunity.pack.cpp" },
+  { import = "astrocommunity.pack.cmake" },
   { import = "astrocommunity.pack.rust" },
   { import = "astrocommunity.pack.zig" },
   { import = "astrocommunity.pack.python" },
