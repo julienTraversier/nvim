@@ -11,7 +11,7 @@ return {
   { import = "astrocommunity.recipes.cache-colorscheme" },
   { import = "astrocommunity.colorscheme.cyberdream-nvim" },
   -- { import = "astrocommunity.utility.noice-nvim" },
-  { import = "astrocommunity.completion.blink-cmp", enabled = false },
+  -- { import = "astrocommunity.completion.blink-cmp", enabled = false },
   { import = "astrocommunity.lsp.lspsaga-nvim" },
   { import = "astrocommunity.editing-support.conform-nvim" },
   { import = "astrocommunity.media.image-nvim" },
@@ -26,5 +26,6 @@ return {
   { import = "astrocommunity.test.neotest" },
   { import = "astrocommunity.editing-support.neogen" },
   { import = "astrocommunity.file-explorer.oil-nvim" },
+  { import = "astrocommunity.debugging.nvim-dap-virtual-text" },
   -- import/override with your plugins folder
 }
