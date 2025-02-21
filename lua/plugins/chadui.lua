@@ -1,3 +1,5 @@
+local status, _ = pcall(require, "nvchad.base46")
+if status == false then return {} end
 return {
   "NvChad/ui",
   opts = {
