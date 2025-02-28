@@ -26,11 +26,12 @@ return {
   { import = "astrocommunity.pack.rust" },
   { import = "astrocommunity.pack.zig" },
   { import = "astrocommunity.pack.python" },
-  { import = "astrocommunity.pack.nvchad-ui", enabled = false },
+  { import = "astrocommunity.pack.nvchad-ui", enabled = true },
   { import = "astrocommunity.test.neotest" },
   { import = "astrocommunity.editing-support.neogen" },
   { import = "astrocommunity.file-explorer.oil-nvim" },
   { import = "astrocommunity.debugging.nvim-dap-virtual-text" },
   { import = "astrocommunity.diagnostics.lsp_lines-nvim" },
+  { import = "astrocommunity.completion.blink-cmp" },
   -- import/override with your plugins folder
 }
