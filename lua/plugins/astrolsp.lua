@@ -38,7 +38,9 @@ return {
       -- end
     },
     -- enable servers that you already have installed without mason
-    servers = {},
+    servers = {
+      -- "pyright"
+    },
     -- customize language server configuration options passed to `lspconfig`
     ---@diagnostic disable: missing-fields
     config = {
@@ -91,15 +93,16 @@ return {
             return client.supports_method "textDocument/semanticTokens/full" and vim.lsp.semantic_tokens ~= nil
           end,
         },
+
         ["gd"] = {
-          function() require("telescope.builtin").lsp_definitions() end,
+          function() require("snacks").picker.lsp_definitions() end,
           desc = "Goto Definition",
         },
         ["grr"] = false,
         ["gra"] = false,
         ["grn"] = false,
         ["gr"] = {
-          function() require("telescope.builtin").lsp_references() end,
+          function() require("snacks").picker.lsp_references() end,
           desc = "Goto Definition",
           noremap = true,
         },

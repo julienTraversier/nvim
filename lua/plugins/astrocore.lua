@@ -16,7 +16,7 @@ return {
       autopairs = true, -- enable autopairs at start
       mouse = "a",
       cmp = true, -- enable completion at start
-      diagnostics_mode = 3, -- diagnostic mode on start (0 = off, 1 = no signs/virtual text, 2 = no virtual text, 3 = on)
+      diagnostics = { virtual_text = true, virtual_lines = false }, -- diagnostic settings on startup
       highlighturl = true, -- highlight URLs at start
       notifications = true, -- enable notifications at start
     },
@@ -24,6 +24,19 @@ return {
     diagnostics = {
       virtual_text = true,
       underline = true,
+    },
+    -- passed to `vim.filetype.add`
+    filetypes = {
+      -- see `:h vim.filetype.add` for usage
+      extension = {
+        foo = "fooscript",
+      },
+      filename = {
+        [".foorc"] = "fooscript",
+      },
+      pattern = {
+        [".*/etc/foo/.*"] = "fooscript",
+      },
     },
     -- vim options can be configured here
     options = {
@@ -47,7 +60,7 @@ return {
       -- first key is the mode
       n = {
         -- second key is the lefthand side of the map
-        -- navigate buffer tabs
+
         ["<A-right>"] = { function() require("astrocore.buffer").nav(vim.v.count1) end, desc = "Next buffer" },
         ["<A-left>"] = { function() require("astrocore.buffer").nav(-vim.v.count1) end, desc = "Previous buffer" },
         ["<Leader>cc"] = {
@@ -61,6 +74,9 @@ return {
 
         ["<Leader>c"] = false,
         ["gr"] = false,
+        -- navigate buffer tabs
+        ["]b"] = { function() require("astrocore.buffer").nav(vim.v.count1) end, desc = "Next buffer" },
+        ["[b"] = { function() require("astrocore.buffer").nav(-vim.v.count1) end, desc = "Previous buffer" },
 
         -- mappings seen under group name "Buffer"
         ["<Leader>bd"] = {
@@ -71,6 +87,7 @@ return {
           end,
           desc = "Close buffer from tabline",
         },
+
         ["<c-t>"] = {
           function() require("toggleterm").open_mapping = [["<c-t>"]] end,
           desc = "toggle terminal",
@@ -78,7 +95,9 @@ return {
         -- tables with just a `desc` key will be registered with which-key if it's installed
         -- this is useful for naming menus
         -- ["<Leader>b"] = { desc = "Buffers" },
+
         -- setting a mapping to false will disable it
+        -- ["<C-S>"] = false,
       },
     },
   },
