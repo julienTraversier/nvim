@@ -15,7 +15,7 @@ return {
   { import = "astrocommunity.colorscheme.gruvbox-nvim" },
   { import = "astrocommunity.colorscheme.neofusion-nvim" },
   { import = "astrocommunity.colorscheme.everforest" },
-  { import = "astrocommunity.bars-and-lines.lualine-nvim" },
+  { import = "astrocommunity.bars-and-lines.lualine-nvim", enabled = false },
   { import = "astrocommunity.lsp.lspsaga-nvim" },
   { import = "astrocommunity.editing-support.conform-nvim" },
   { import = "astrocommunity.media.image-nvim" },
@@ -32,6 +32,8 @@ return {
   { import = "astrocommunity.file-explorer.oil-nvim" },
   { import = "astrocommunity.debugging.nvim-dap-virtual-text" },
   { import = "astrocommunity.diagnostics.lsp_lines-nvim" },
+  { import = "astrocommunity.diagnostics.trouble-nvim" },
   { import = "astrocommunity.completion.blink-cmp" },
+  { import = "astrocommunity.search.nvim-spectre" },
   -- import/override with your plugins folder
 }

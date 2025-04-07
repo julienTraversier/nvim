@@ -26,14 +26,14 @@ return {
         -- You can customize some of the format options for the filetype (:help conform.format)
         rust = { "rustfmt", lsp_format = "fallback" },
         cpp = { "clang-format" },
-        cmake = { "gersemi" },
-        --c = {"clang-format"},
+        -- cmake = { lsp_format = "never" },
+        c = { "clang-format" },
       },
-      format_on_save = function(bufnr)
-        -- Disable with a global or buffer-local variable
-        if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then return end
-        return { timeout_ms = 500, lsp_format = "fallback" }
-      end,
+        format_on_save = function(bufnr)
+          -- Disable with a global or buffer-local variable
+          if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then return end
+          return { timeout_ms = 500, lsp_format = "never" }
+        end,
     },
   },
 }

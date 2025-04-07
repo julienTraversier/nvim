@@ -74,6 +74,10 @@ return {
         request = "launch",
         program = function() return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file") end,
         cwd = "${workspaceFolder}",
+        args = function()
+          local input = vim.fn.input "Arguments: "
+          return vim.split(input, " ")
+        end,
         stopAtEntry = false,
       },
     }
@@ -85,9 +89,13 @@ return {
         program = function() return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file") end,
         --program = "${workspaceFolder}/../build_x86/fiber-optic/Fiber_Optic",
         cwd = "${workspaceFolder}",
-        args = {
-          "--enable-pretty-printing",
-        },
+        -- args = {
+        --   "--enable-pretty-printing",
+        -- },
+        args = function()
+          local input = vim.fn.input "Arguments: "
+          return vim.split(input, " ")
+        end,
         stopAtEntry = false,
       },
     }
