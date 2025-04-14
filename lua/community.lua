@@ -33,9 +33,10 @@ return {
   { import = "astrocommunity.debugging.nvim-dap-virtual-text" },
   -- { import = "astrocommunity.utility.noice-nvim" },
   -- { import = "astrocommunity.fuzzy-finder.telescope-nvim" },
-  --{ import = "astrocommunity.diagnostics.lsp_lines-nvim" },
+  -- { import = "astrocommunity.diagnostics.lsp_lines-nvim" },
   { import = "astrocommunity.diagnostics.trouble-nvim" },
   -- { import = "astrocommunity.completion.blink-cmp" },
   { import = "astrocommunity.search.nvim-spectre" },
+  { import = "astrocommunity.media.codesnap-nvim"}
   -- import/override with your plugins folder
 }
