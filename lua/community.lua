@@ -34,9 +34,12 @@ return {
   -- { import = "astrocommunity.utility.noice-nvim" },
   -- { import = "astrocommunity.fuzzy-finder.telescope-nvim" },
   -- { import = "astrocommunity.diagnostics.lsp_lines-nvim" },
+  { import = "astrocommunity.recipes.diagnostic-virtual-lines-current-line" },
   { import = "astrocommunity.diagnostics.trouble-nvim" },
   -- { import = "astrocommunity.completion.blink-cmp" },
   { import = "astrocommunity.search.nvim-spectre" },
-  { import = "astrocommunity.media.codesnap-nvim"}
+  { import = "astrocommunity.media.codesnap-nvim" },
+  { import = "astrocommunity.workflow.hardtime-nvim" },
+  -- { import = "astrocommunity.bars-and-lines.bufferline-nvim" },
   -- import/override with your plugins folder
 }

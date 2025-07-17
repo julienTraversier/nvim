@@ -1,11 +1,3 @@
--- debug.lua
---
--- Shows how to use the DAP plugin to debug your code.
---
--- Primarily focused on configuring the debugger for Go, but can
--- be extended to other languages as well. That's why it's called
--- kickstart.nvim and not kitchen-sink.nvim ;)
-
 return {
   -- NOTE: Yes, you can install new plugins here!
   "mfussenegger/nvim-dap",
@@ -67,12 +59,28 @@ return {
       type = "executable",
       command = "/home/jtraversier/Téléchargements/extension/debugAdapters/bin/OpenDebugAD7",
     }
+    vim.g.last_entered_path = nil
     dap.configurations.c = {
       {
         name = "Launch file",
         type = "cppdbg",
         request = "launch",
-        program = function() return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file") end,
+        -- program = function() return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file") end,
+        program = function()
+          -- Default to current working directory or last entered path
+          local default_path = vim.g.last_entered_path or (vim.fn.getcwd() .. "/")
+
+          -- Get user input with the default path
+          local path = vim.fn.input("Path to executable: ", default_path, "file")
+
+          -- Save the entered path for future use
+          if path and path ~= "" then
+            -- Store just the directory part for future use
+            vim.g.last_entered_path = vim.fn.fnamemodify(path, ":h") .. "/"
+          end
+
+          return path
+        end,
         cwd = "${workspaceFolder}",
         args = function()
           local input = vim.fn.input "Arguments: "
@@ -81,23 +89,24 @@ return {
         stopAtEntry = false,
       },
     }
-    dap.configurations.cpp = {
-      {
-        name = "Launch file",
-        type = "cppdbg",
-        request = "launch",
-        program = function() return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file") end,
-        --program = "${workspaceFolder}/../build_x86/fiber-optic/Fiber_Optic",
-        cwd = "${workspaceFolder}",
-        -- args = {
-        --   "--enable-pretty-printing",
-        -- },
-        args = function()
-          local input = vim.fn.input "Arguments: "
-          return vim.split(input, " ")
-        end,
-        stopAtEntry = false,
-      },
-    }
+    dap.configurations.cpp = dap.configurations.c
+    -- dap.configurations.cpp = {
+    --   {
+    --     name = "Launch file",
+    --     type = "cppdbg",
+    --     request = "launch",
+    --     program = function() return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file") end,
+    --     --program = "${workspaceFolder}/../build_x86/fiber-optic/Fiber_Optic",
+    --     cwd = "${workspaceFolder}",
+    --     -- args = {
+    --     --   "--enable-pretty-printing",
+    --     -- },
+    --     args = function()
+    --       local input = vim.fn.input "Arguments: "
+    --       return vim.split(input, " ")
+    --     end,
+    --     stopAtEntry = false,
+    --   },
+    -- }
   end,
 }
