@@ -12,7 +12,7 @@ return {
         separator_style = "default",
         order = { "mode", "file", "git", "%=", "lsp_msg", "%=", "diagnostics", "clock", "lsp", "cwd", "cursor" },
         modules = {
-          clock = function() return "  " .. os.date "%H:%M " end,
+          clock = function() return "  " .. os.date "%H:%M " end,
         },
       },
       cmp = {

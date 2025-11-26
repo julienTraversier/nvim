@@ -43,7 +43,7 @@ return {
     dap.listeners.after.event_initialized["dapui_config"] = dapui.open
     dap.listeners.before.event_terminated["dapui_config"] = dapui.close
     dap.listeners.before.event_exited["dapui_config"] = dapui.close
-    require("dap-python").setup "~/.virtualenvs/debugpy/bin/python"
+    require("dap-python").setup "~/.virtualenvs/debugpy/bin/python3.11"
     dap.configurations.python = {
       {
         type = "python",
