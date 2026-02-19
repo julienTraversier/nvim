@@ -20,7 +20,7 @@ return {
   { import = "astrocommunity.editing-support.conform-nvim" },
   { import = "astrocommunity.media.image-nvim" },
   { import = "astrocommunity.markdown-and-latex.render-markdown-nvim" },
-  { import = "astrocommunity.completion.avante-nvim" },
+  -- { import = "astrocommunity.completion.avante-nvim" },
   { import = "astrocommunity.pack.cpp" },
   { import = "astrocommunity.pack.cmake" },
   { import = "astrocommunity.pack.rust" },
@@ -35,4 +35,5 @@ return {
   { import = "astrocommunity.search.nvim-spectre" },
   { import = "astrocommunity.media.codesnap-nvim" },
   { import = "astrocommunity.note-taking.obsidian-nvim" },
+  -- { import = "astrocommunity.ai.opencode-nvim" },
 }

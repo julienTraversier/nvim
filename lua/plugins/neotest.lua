@@ -1,11 +1,11 @@
 return {
   "nvim-neotest/neotest",
-
-  config = function(_, opts)
-    require("neotest").setup {
-      adapters = {
-        require("neotest-gtest").setup { opts },
-      },
-    }
+  dependencies = {
+    "alfaix/neotest-gtest",
+  },
+  opts = function(_, opts)
+    if not opts.adapters then opts.adapters = {} end
+    -- Add GTest adapter to existing adapters from community packs (Python, Rust)
+    table.insert(opts.adapters, require("neotest-gtest").setup {})
   end,
 }
