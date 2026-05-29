@@ -25,6 +25,7 @@ return {
   { import = "astrocommunity.pack.cmake" },
   { import = "astrocommunity.pack.rust" },
   { import = "astrocommunity.pack.python" },
+  { import = "astrocommunity.pack.json" },
   { import = "astrocommunity.pack.nvchad-ui", enabled = true },
   { import = "astrocommunity.test.neotest" },
   { import = "astrocommunity.editing-support.neogen" },
@@ -35,5 +36,7 @@ return {
   { import = "astrocommunity.search.nvim-spectre" },
   { import = "astrocommunity.media.codesnap-nvim" },
   { import = "astrocommunity.note-taking.obsidian-nvim" },
+  { import = "astrocommunity.git.codediff-nvim" },
   -- { import = "astrocommunity.ai.opencode-nvim" },
+  { import = "astrocommunity.ai.minuet-ai-nvim" },
 }

@@ -9,7 +9,7 @@ return {
       opts = opts or {}
 
       -- Configure sources
-      opts.sources = opts.sources or {}
+      opts.sources = opts.sources or { "lsp", "path", "buffer", "snippets", "minuet" }
       opts.sources.default = opts.sources.default or {}
 
       -- Add DAP source for debugging
@@ -23,6 +23,17 @@ return {
         opts = {
           filetype = { "dap-repl", "dapui_watches", "dapui_hover" },
         },
+      }
+
+      -- Minuet AI completion provider
+      opts.sources.providers.minuet = {
+        name = "minuet",
+        module = "minuet.blink",
+        async = true,
+        -- Should match minuet.config.request_timeout * 1000,
+        -- since minuet.config.request_timeout is in seconds
+        timeout_ms = 3000,
+        score_offset = 50, -- Gives minuet higher priority among suggestions
       }
 
       -- Configure appearance to work with NvChad UI
@@ -43,8 +54,16 @@ return {
       opts.keymap["<C-b>"] = { "scroll_documentation_up", "fallback" }
       opts.keymap["<C-f>"] = { "scroll_documentation_down", "fallback" }
 
+      -- Manually invoke minuet completion
+      opts.keymap["<A-y>"] = require("minuet").make_blink_map()
+
       -- Configure completion menu
       opts.completion = opts.completion or {}
+
+      -- Recommended to avoid unnecessary request
+      opts.completion.trigger = opts.completion.trigger or {}
+      opts.completion.trigger.prefetch_on_insert = false
+
       opts.completion.menu = opts.completion.menu or {}
       opts.completion.menu.border = "rounded"
       opts.completion.menu.winhighlight =
