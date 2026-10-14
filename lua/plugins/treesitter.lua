@@ -1,83 +1,35 @@
-if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
-
 -- Customize Treesitter
+-- --------------------
+-- Treesitter customizations are handled with AstroCore
+-- as nvim-treesitter simply provides a download utility for parsers
 
 ---@type LazySpec
 return {
-  "nvim-treesitter/nvim-treesitter",
+  "AstroNvim/astrocore",
+  ---@type AstroCoreOpts
   opts = {
-    ensure_installed = {
-      -- Core languages
-      "lua",
-      "vim",
-      "vimdoc",
-
-      -- User's primary languages
-      "cpp",
-      "c",
-      "python",
-      "rust",
-      "cmake",
-      "qmljs", -- QML support
-
-      -- Essential utility parsers
-      "json",
-      "json5",
-      "jsonc",
-      "yaml",
-      "toml",
-      "markdown",
-      "markdown_inline",
-      "bash",
-      "fish",
-
-      -- Additional useful parsers
-      "regex",
-      "comment",
-      "query", -- For treesitter query files
-    },
-
-    incremental_selection = {
-      enable = true,
-      keymaps = {
-        init_selection = "<C-space>",
-        node_incremental = "<C-space>",
-        scope_incremental = false,
-        node_decremental = "<bs>",
+    treesitter = {
+      highlight = true, -- enable/disable treesitter based highlighting
+      indent = true, -- enable/disable treesitter based indentation
+      auto_install = true, -- enable/disable automatic installation of detected languages
+      ensure_installed = {
+        "lua",
+        "vim",
+        -- add more arguments for adding more treesitter parsers
       },
     },
-
-    textobjects = {
-      select = {
-        enable = true,
-        lookahead = true,
-        keymaps = {
-          ["af"] = "@function.outer",
-          ["if"] = "@function.inner",
-          ["ac"] = "@class.outer",
-          ["ic"] = "@class.inner",
-          ["aa"] = "@parameter.outer",
-          ["ia"] = "@parameter.inner",
-        },
-      },
-      move = {
-        enable = true,
-        set_jumps = true,
-        goto_next_start = {
-          ["]f"] = "@function.outer",
-          ["]c"] = "@class.outer",
-        },
-        goto_next_end = {
-          ["]F"] = "@function.outer",
-          ["]C"] = "@class.outer",
-        },
-        goto_previous_start = {
-          ["[f"] = "@function.outer",
-          ["[c"] = "@class.outer",
-        },
-        goto_previous_end = {
-          ["[F"] = "@function.outer",
-          ["[C"] = "@class.outer",
+    autocmds = {
+      -- WARN: tree-sitter-xml external scanner crashes nvim (invalid free in
+      -- _array__delete during incremental parse). Disable TS for XML filetypes
+      -- and fall back to Vim's regex syntax until the grammar is fixed upstream.
+      disable_xml_treesitter = {
+        {
+          event = "FileType",
+          pattern = { "xml", "svg", "xsd", "dtd" },
+          desc = "Disable tree-sitter for XML (scanner crash in tree-sitter-xml)",
+          callback = function(args)
+            vim.treesitter.stop(args.buf)
+          end,
         },
       },
     },
