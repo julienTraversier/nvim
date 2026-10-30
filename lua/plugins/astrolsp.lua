@@ -44,8 +44,10 @@ return {
     -- customize language server configuration passed to `vim.lsp.config`
     -- client specific configuration can also go in `lsp/` in your configuration root (see `:h lsp-config`)
     config = {
-      -- clangd = { capabilities = { offsetEncoding = "utf-8" } },
-      -- ["*"] = { capabilities = {} }, -- modify default LSP client settings such as capabilities
+      bitbake = {
+        cmd = { "language-server-bitbake", "--stdio" },
+        filetypes = { "bitbake" },
+      },
     },
     -- customize how language servers are attached
     handlers = {

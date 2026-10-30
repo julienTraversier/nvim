@@ -24,19 +24,6 @@ return {
       virtual_text = true,
       underline = true,
     },
-    -- passed to `vim.filetype.add`
-    filetypes = {
-      -- see `:h vim.filetype.add` for usage
-      extension = {
-        foo = "fooscript",
-      },
-      filename = {
-        [".foorc"] = "fooscript",
-      },
-      pattern = {
-        [".*/etc/foo/.*"] = "fooscript",
-      },
-    },
     -- vim options can be configured here
     options = {
       opt = { -- vim.opt.<key>
@@ -65,11 +52,6 @@ return {
           function() require("astrocore.buffer").close_all(true, false) end,
           desc = "close all buffer",
         },
-        ["<Leader>C"] = {
-          function() require("astrocore.buffer").close() end,
-          desc = "close current buffer",
-        },
-
         ["<Leader>c"] = false,
         ["gr"] = false,
         -- navigate buffer tabs
@@ -84,10 +66,6 @@ return {
             )
           end,
           desc = "Close buffer from tabline",
-        },
-        ["<c-t>"] = {
-          function() require("toggleterm").open_mapping = [["<c-t>"]] end,
-          desc = "toggle terminal",
         },
 
         -- tables with just a `desc` key will be registered with which-key if it's installed

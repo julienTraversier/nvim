@@ -27,9 +27,7 @@ return {
           event = "FileType",
           pattern = { "xml", "svg", "xsd", "dtd" },
           desc = "Disable tree-sitter for XML (scanner crash in tree-sitter-xml)",
-          callback = function(args)
-            vim.treesitter.stop(args.buf)
-          end,
+          callback = function(args) vim.treesitter.stop(args.buf) end,
         },
       },
     },

@@ -13,7 +13,6 @@ return {
   { import = "astrocommunity.editing-support.conform-nvim" },
   { import = "astrocommunity.media.image-nvim" },
   { import = "astrocommunity.markdown-and-latex.render-markdown-nvim" },
-  -- { import = "astrocommunity.completion.avante-nvim" },
   { import = "astrocommunity.pack.cpp" },
   { import = "astrocommunity.pack.cmake" },
   { import = "astrocommunity.pack.rust" },
@@ -22,7 +21,7 @@ return {
   { import = "astrocommunity.pack.python.black" },
   { import = "astrocommunity.pack.python.isort" },
   { import = "astrocommunity.pack.json" },
-  { import = "astrocommunity.pack.nvchad-ui", enabled = true },
+  { import = "astrocommunity.pack.nvchad-ui" },
   { import = "astrocommunity.test.neotest" },
   { import = "astrocommunity.editing-support.neogen" },
   { import = "astrocommunity.file-explorer.oil-nvim" },
@@ -34,6 +33,4 @@ return {
   { import = "astrocommunity.note-taking.obsidian-nvim" },
   { import = "astrocommunity.git.codediff-nvim" },
   { import = "astrocommunity.git.neogit" },
-  -- { import = "astrocommunity.ai.opencode-nvim" },
-  -- { import = "astrocommunity.ai.minuet-ai-nvim" },
 }
